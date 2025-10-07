@@ -23,6 +23,7 @@ public class Test : MonoBehaviour
 {
     private static readonly int SAMPLE_COUNT = Shader.PropertyToID("_SampleCount");
     private static readonly int SAMPLES = Shader.PropertyToID("_Samples");
+    private static readonly int DECISION_TEX = Shader.PropertyToID("_DecisionTex");
 
 
     [SerializeField] private TextAsset _trainDataset;
@@ -42,12 +43,44 @@ public class Test : MonoBehaviour
         m_Buffer.SetData(samples);
         _renderer.material.SetBuffer(SAMPLES, m_Buffer);
         _renderer.material.SetInt(SAMPLE_COUNT, samples.Length);
-        
+
+        Zort();
     }
 
     private void OnDestroy()
     {
         m_Buffer.Release();
+    }
+
+    private void Zort()
+    {
+        const int width = 512;
+        const int height = 512;
+        var matrixTex = new Texture2D(width, height, TextureFormat.RGBA32, false)
+        {
+            filterMode = FilterMode.Trilinear,
+            wrapMode = TextureWrapMode.Clamp
+        };
+
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                var xT = Mathf.Lerp(0f, 12f, x / (float) width);
+                var yT = Mathf.Lerp(0f, 12f, y / (float) height);
+                var value = Classify(xT, yT);
+                var color = value == 0 ? _safeColor : _notSafeColor;
+                color.a = 1;
+                matrixTex.SetPixel(x, y, color);
+            }
+        }
+        matrixTex.Apply();
+        _renderer.material.SetTexture(DECISION_TEX, matrixTex);
+    }
+
+    private int Classify(float x, float y)
+    {
+        return (0.25f * x * x - y - 2) > 3 ? 1 : 0;
     }
 
     private FruitData[] ParseDataset(TextAsset textAsset)

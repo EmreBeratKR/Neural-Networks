@@ -24,6 +24,7 @@ Shader "Custom/ClassificationShader/2D-test"
             };
             StructuredBuffer<Sample> _Samples;
             int _SampleCount;
+            sampler2D _DecisionTex;
 
             struct appdata
             {
@@ -47,6 +48,7 @@ Shader "Custom/ClassificationShader/2D-test"
 
             fixed4 frag (v2f i) : SV_Target
             {
+                return tex2D(_DecisionTex, i.uv);
                 float4 col = float4(1,1,1,1);
                 [loop]
                 for (int idx = 0; idx < _SampleCount; idx++)

@@ -48,17 +48,25 @@ Shader "Custom/ClassificationShader/2D-test"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                return tex2D(_DecisionTex, i.uv);
+                float padding = 0.05;
+                
+                float2 uv = i.uv * (1.0 + 2 * padding) - padding;
+                float4 bg = tex2D(_DecisionTex, uv);
                 float4 col = float4(1,1,1,1);
                 [loop]
                 for (int idx = 0; idx < _SampleCount; idx++)
                 {
-                    float padding = 0.05;
                     float radius = 0.01;
-                    float2 diff = i.uv - (_Samples[idx].pos * (1.0 - 2.0 * padding) + padding);
+                    float2 diff = uv - _Samples[idx].pos;
                     if (length(diff) < radius)
                         col.xyz = _Samples[idx].color;
                 }
+
+                if (col.x == 1 && col.y == 1 && col.z == 1)
+                {
+                    return bg * 0.2;
+                }
+                
                 return col;
             }
             ENDCG

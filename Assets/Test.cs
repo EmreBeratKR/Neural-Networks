@@ -14,18 +14,22 @@ public struct SampleData
 [Serializable]
 public struct FruitData
 {
-    public float spikeLenght;
-    public float spikeThickness;
+    public double spikeLenght;
+    public double spikeThickness;
     public bool isPoisonous;
 }
 
 public class Test : MonoBehaviour
 {
+    private const int WIDTH = 128;
+    private const int HEIGHT = 128;
+    
     private static readonly int SAMPLE_COUNT = Shader.PropertyToID("_SampleCount");
     private static readonly int SAMPLES = Shader.PropertyToID("_Samples");
     private static readonly int DECISION_TEX = Shader.PropertyToID("_DecisionTex");
 
 
+    [SerializeField] private NeuralNetwork _neuralNetwork;
     [SerializeField] private TextAsset _trainDataset;
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _safeColor;
@@ -33,18 +37,29 @@ public class Test : MonoBehaviour
 
 
     private ComputeBuffer m_Buffer;
+    private Texture2D m_Texture;
+    private FruitData[] m_Dataset;
+    private double m_MinSpikeLenght;
+    private double m_MaxSpikeLenght;
+    private double m_MinSpikeThickness;
+    private double m_MaxSpikeThickness;
 
 
     private void Awake()
     {
-        var dataset = ParseDataset(_trainDataset);
-        var samples = GetSampleDatas(dataset);
+        m_Dataset = ParseDataset(_trainDataset);
+        var samples = GetSampleDatas(m_Dataset);
         m_Buffer = new ComputeBuffer(samples.Length, sizeof(float) * 5);
         m_Buffer.SetData(samples);
         _renderer.material.SetBuffer(SAMPLES, m_Buffer);
         _renderer.material.SetInt(SAMPLE_COUNT, samples.Length);
-
-        Zort();
+        
+        m_Texture = new Texture2D(WIDTH, HEIGHT, TextureFormat.RGBA32, false)
+        {
+            filterMode = FilterMode.Trilinear,
+            wrapMode = TextureWrapMode.Clamp
+        };
+        _renderer.material.SetTexture(DECISION_TEX, m_Texture);
     }
 
     private void OnDestroy()
@@ -52,35 +67,46 @@ public class Test : MonoBehaviour
         m_Buffer.Release();
     }
 
-    private void Zort()
+    private void Update()
     {
-        const int width = 512;
-        const int height = 512;
-        var matrixTex = new Texture2D(width, height, TextureFormat.RGBA32, false)
+        for (var y = 0; y < HEIGHT; y++)
         {
-            filterMode = FilterMode.Trilinear,
-            wrapMode = TextureWrapMode.Clamp
-        };
-
-        for (var y = 0; y < height; y++)
-        {
-            for (var x = 0; x < width; x++)
+            for (var x = 0; x < WIDTH; x++)
             {
-                var xT = Mathf.Lerp(0f, 12f, x / (float) width);
-                var yT = Mathf.Lerp(0f, 12f, y / (float) height);
+                var xT = Lerp(m_MinSpikeLenght, m_MaxSpikeLenght, x / (double) WIDTH);
+                var yT = Lerp(m_MinSpikeThickness, m_MaxSpikeThickness, y / (double) HEIGHT);
                 var value = Classify(xT, yT);
                 var color = value == 0 ? _safeColor : _notSafeColor;
                 color.a = 1;
-                matrixTex.SetPixel(x, y, color);
+                m_Texture.SetPixel(x, y, color);
             }
         }
-        matrixTex.Apply();
-        _renderer.material.SetTexture(DECISION_TEX, matrixTex);
+        m_Texture.Apply();
+        TestModel();
     }
 
-    private int Classify(float x, float y)
+    private void TestModel()
     {
-        return (0.25f * x * x - y - 2) > 3 ? 1 : 0;
+        var correct = 0;
+        foreach (var data in m_Dataset)
+        {
+            var predict = Classify(data.spikeLenght, data.spikeThickness);
+            if (predict == 0 && data.isPoisonous == false)
+            {
+                correct += 1;
+            }
+            else if (predict == 1 && data.isPoisonous == true)
+            {
+                correct += 1;
+            }
+        }
+
+        Debug.Log($"{correct}/{m_Dataset.Length} [%{(correct / (float) m_Dataset.Length) * 100}]");
+    }
+
+    private int Classify(double x, double y)
+    {
+        return _neuralNetwork.Predict(new []{x, y});
     }
 
     private FruitData[] ParseDataset(TextAsset textAsset)
@@ -102,17 +128,17 @@ public class Test : MonoBehaviour
     
     private SampleData[] GetSampleDatas(FruitData[] dataset)
     {
-        var minSpikeLenght = float.NegativeInfinity;
-        var maxSpikeLenght = float.PositiveInfinity;
-        var minSpikeThickness = float.NegativeInfinity;
-        var maxSpikeThickness = float.PositiveInfinity;
+        var minSpikeLenght = double.NegativeInfinity;
+        var maxSpikeLenght = double.PositiveInfinity;
+        var minSpikeThickness = double.NegativeInfinity;
+        var maxSpikeThickness = double.PositiveInfinity;
 
         for (var i = 0; i < dataset.Length; i++)
         {
-            minSpikeLenght = Mathf.Max(minSpikeLenght, dataset[i].spikeLenght);
-            maxSpikeLenght = Mathf.Min(maxSpikeLenght, dataset[i].spikeLenght);
-            minSpikeThickness = Mathf.Max(minSpikeThickness, dataset[i].spikeThickness);
-            maxSpikeThickness = Mathf.Min(maxSpikeThickness, dataset[i].spikeThickness);
+            minSpikeLenght = Math.Max(minSpikeLenght, dataset[i].spikeLenght);
+            maxSpikeLenght = Math.Min(maxSpikeLenght, dataset[i].spikeLenght);
+            minSpikeThickness = Math.Max(minSpikeThickness, dataset[i].spikeThickness);
+            maxSpikeThickness = Math.Min(maxSpikeThickness, dataset[i].spikeThickness);
         }
         
         var samples = new SampleData[dataset.Length];
@@ -123,13 +149,37 @@ public class Test : MonoBehaviour
             var color = fruit.isPoisonous ? _notSafeColor : _safeColor;
             samples[i] = new SampleData
             {
-                x = Mathf.InverseLerp(minSpikeLenght, maxSpikeLenght, dataset[i].spikeLenght),
-                y = Mathf.InverseLerp(minSpikeThickness, maxSpikeThickness, dataset[i].spikeThickness),
+                x = (float) InverseLerp(minSpikeLenght, maxSpikeLenght, dataset[i].spikeLenght),
+                y = (float) InverseLerp(minSpikeThickness, maxSpikeThickness, dataset[i].spikeThickness),
                 r = color.r,
                 g = color.g,
                 b = color.b
             };
         }
+
+        m_MinSpikeLenght = minSpikeLenght;
+        m_MaxSpikeLenght = maxSpikeLenght;
+        m_MinSpikeThickness = minSpikeThickness;
+        m_MaxSpikeThickness = maxSpikeThickness;
+        
         return samples;
+    }
+
+
+    public static double Lerp(double a, double b, double t)
+    {
+        return a + (b - a) * Clamp01(t);
+    }
+    
+    private static double InverseLerp(double a, double b, double value)
+    {
+        return a != b ? Clamp01((value - a) / (b - a)) : 0.0;
+    }
+    
+    private static double Clamp01(double value)
+    {
+        if (value < 0.0)
+            return 0.0;
+        return value > 1.0 ? 1.0 : value;
     }
 }

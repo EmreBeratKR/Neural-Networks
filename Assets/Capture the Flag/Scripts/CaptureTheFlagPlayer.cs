@@ -5,22 +5,19 @@ namespace Capture_the_Flag
 {
     public class CaptureTheFlagPlayer : MonoBehaviour
     {
+        [SerializeField] private Transform _visual;
+        
+        
         private CaptureTheFlagGame m_Game;
         private CaptureTheFlagPlayerBrain m_Brain;
         private ICaptureTheFlagPlayerInput m_Input;
         private bool m_IsCapturedFlag;
         private bool m_IsStopped;
-        private float m_StartTime;
+        private bool m_IsDead;
 
 
         public static Action<CaptureTheFlagPlayer> OnAnyStop;
-
-
-        private void Start()
-        {
-            m_StartTime = Time.time;
-        }
-
+        
 
         private void Update()
         {
@@ -46,8 +43,10 @@ namespace Capture_the_Flag
             var flagPosition = m_Game.GetState().flagPosition;
             var position = (Vector2) transform.position;
             var sqrDistance = Vector2.SqrMagnitude(flagPosition - position);
+            var radius = GetRadius();
+            var sqrRadius = radius * radius;
 
-            return sqrDistance < 0.01f;
+            return sqrDistance < sqrRadius;
         }
 
         private void CaptureFlag()
@@ -72,9 +71,19 @@ namespace Capture_the_Flag
             m_Game = game;
         }
         
+        public Vector3 GetPosition()
+        {
+            return transform.position;
+        }
+        
         public void SetPosition(Vector3 position)
         {
             transform.position = position;
+        }
+
+        public float GetRadius()
+        {
+            return _visual.localScale.x;
         }
 
         public void SetInput(ICaptureTheFlagPlayerInput input)
@@ -112,6 +121,12 @@ namespace Capture_the_Flag
             Move(Vector3.left);
         }
 
+        public void Die()
+        {
+            m_IsDead = true;
+            Stop();
+        }
+        
         public void Stop()
         {
             m_IsStopped = true;
@@ -123,19 +138,17 @@ namespace Capture_the_Flag
             return m_IsCapturedFlag || m_IsStopped;
         }
 
-        public float GetElapsedTime()
-        {
-            return Time.time - m_StartTime;
-        }
-
         public float CalculateFitness()
         {
-            var flagPosition = m_Game.GetState().flagPosition;
+            if (m_IsDead) return 0f;
+            
             var position = (Vector2) transform.position;
+            var flagPosition = m_Game.GetState().flagPosition;
+            var secondPosition = new Vector2(0.750999987f, -3.71499991f);
             var distance = Vector2.Distance(flagPosition, position);
-            var elapsedTime = GetElapsedTime();
+            var secondDistance = Vector2.Distance(secondPosition, position);
 
-            return 1f / (distance + (elapsedTime / 60f) + 1f);
+            return 1f / (distance * 3f + secondDistance * 0.5f + 1f);
         }
     }
 }

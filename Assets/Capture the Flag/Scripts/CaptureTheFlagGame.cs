@@ -2,21 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Capture_the_Flag
 {
     public class CaptureTheFlagGame : MonoBehaviour
     {
         [SerializeField] private CaptureTheFlagPlayer _playerPrefab;
-        [SerializeField] private Flag _flagPrefab;
+        [SerializeField] private Flag _flag;
+        [SerializeField] private Transform _start;
 
 
-        public Action OnDone;
+        public event Action OnDone;
         
 
         private GeneticAlgorithmParameters m_GaParameters;
         private List<CaptureTheFlagPlayer> m_Players;
-        private Flag m_Flag;
         private bool m_IsStarted;
 
 
@@ -38,21 +39,10 @@ namespace Capture_the_Flag
                 OnDone?.Invoke();
             }
         }
-        
-
-        private Vector3 GetStartPosition()
-        {
-            return new Vector3(-4.3f, -4.5f, 0f);
-        }
-        
-        private Vector3 GetRandomFlagPosition()
-        {
-            return new Vector3(4.7f, 4.5f, 0f);
-        }
 
         private void CreatePlayerWithBrain(CaptureTheFlagPlayerBrain brain)
         {
-            var startPosition = GetStartPosition();
+            var startPosition = _start.position;
             var player = Instantiate(_playerPrefab);
             var input = CaptureTheFlagPlayerBotInput.New(player);
             player.SetGame(this);
@@ -81,11 +71,6 @@ namespace Capture_the_Flag
             {
                 CreatePlayerWithBrain(brains[i]);
             }
-            
-            var flagPosition = GetRandomFlagPosition();
-            var flag = Instantiate(_flagPrefab);
-            flag.SetPosition(flagPosition);
-            m_Flag = flag;
 
             m_IsStarted = true;
         }
@@ -97,8 +82,6 @@ namespace Capture_the_Flag
                 Destroy(player.gameObject);
             }
             m_Players.Clear();
-            Destroy(m_Flag.gameObject);
-            m_Flag = null;
             m_IsStarted = false;
         }
 
@@ -106,9 +89,14 @@ namespace Capture_the_Flag
         {
             return new CaptureTheFlagGameState
             {
-                flagPosition = m_Flag.GetPosition(),
+                flagPosition = _flag.GetPosition(),
                 isStarted = m_IsStarted
             };
+        }
+
+        public List<CaptureTheFlagPlayer> GetPlayers()
+        {
+            return m_Players;
         }
 
         public CaptureTheFlagPlayer[] GetBestPlayers()

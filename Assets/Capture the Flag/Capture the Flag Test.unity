@@ -427,7 +427,7 @@ MonoBehaviour:
   _brainSizeText: {fileID: 2038024371}
   _parameters:
     framesPerSeconds: 60
-    populationCount: 2000
+    populationCount: 1000
     bestPopulationCount: 500
     genPerBrainSizeIncrease: 5
     brainBatchSize: 600

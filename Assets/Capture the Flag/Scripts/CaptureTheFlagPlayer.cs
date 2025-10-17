@@ -1,15 +1,17 @@
 using System;
+using GeneticAlgorithm;
 using UnityEngine;
 
 namespace Capture_the_Flag
 {
-    public class CaptureTheFlagPlayer : MonoBehaviour
+    public class CaptureTheFlagPlayer : MonoBehaviour,
+        IGeneticAlgorithmEntity
     {
         [SerializeField] private Transform _visual;
         
         
         private CaptureTheFlagGame m_Game;
-        private CaptureTheFlagPlayerBrain m_Brain;
+        private IGeneticAlgorithmBrain m_Brain;
         private ICaptureTheFlagPlayerInput m_Input;
         private bool m_IsCapturedFlag;
         private bool m_IsStopped;
@@ -91,12 +93,12 @@ namespace Capture_the_Flag
             m_Input = input;
         }
 
-        public CaptureTheFlagPlayerBrain GetBrain()
+        public IGeneticAlgorithmBrain GetBrain()
         {
             return m_Brain;
         }
         
-        public void SetBrain(CaptureTheFlagPlayerBrain brain)
+        public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;
         }

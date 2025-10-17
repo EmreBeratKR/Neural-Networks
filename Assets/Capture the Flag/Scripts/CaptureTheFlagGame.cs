@@ -1,19 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GeneticAlgorithm;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Capture_the_Flag
 {
-    public class CaptureTheFlagGame : MonoBehaviour
+    public class CaptureTheFlagGame : MonoBehaviour,
+        IGeneticAlgorithmEnvironment
     {
         [SerializeField] private CaptureTheFlagPlayer _playerPrefab;
         [SerializeField] private Flag _flag;
         [SerializeField] private Transform _start;
 
 
-        public event Action OnDone;
+        public event Action OnSimulationDone;
         
 
         private GeneticAlgorithmParameters m_GaParameters;
@@ -36,20 +38,8 @@ namespace Capture_the_Flag
         {
             if (IsGameDone())
             {
-                OnDone?.Invoke();
+                OnSimulationDone?.Invoke();
             }
-        }
-
-        private void CreatePlayerWithBrain(CaptureTheFlagPlayerBrain brain)
-        {
-            var startPosition = _start.position;
-            var player = Instantiate(_playerPrefab);
-            var input = CaptureTheFlagPlayerBotInput.New(player);
-            player.SetGame(this);
-            player.SetInput(input);
-            player.SetBrain(brain);
-            player.SetPosition(startPosition);
-            m_Players.Add(player);
         }
 
         private bool IsGameDone()
@@ -58,21 +48,15 @@ namespace Capture_the_Flag
         }
 
 
+
+
+
+
         public void Initialize(GeneticAlgorithmParameters parameters)
         {
             Application.targetFrameRate = parameters.framesPerSeconds;
             m_GaParameters = parameters;
             m_Players = new List<CaptureTheFlagPlayer>();
-        }
-
-        public void Begin(List<CaptureTheFlagPlayerBrain> brains)
-        {
-            for (var i = 0; i < m_GaParameters.populationCount; i++)
-            {
-                CreatePlayerWithBrain(brains[i]);
-            }
-
-            m_IsStarted = true;
         }
 
         public void ResetState()
@@ -84,6 +68,66 @@ namespace Capture_the_Flag
             m_Players.Clear();
             m_IsStarted = false;
         }
+
+        public void SetPopulation(IGeneticAlgorithmEntity[] population)
+        {
+            foreach (var entity in population)
+            {
+                m_Players.Add((CaptureTheFlagPlayer) entity);
+            }
+        }
+
+        public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
+        {
+            var brain = CaptureTheFlagPlayerBrain.New(brainSize);
+            return CreateEntityWithBrain(brain);
+        }
+        
+        public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
+        {
+            var startPosition = _start.position;
+            var player = Instantiate(_playerPrefab);
+            var input = CaptureTheFlagPlayerBotInput.New(player);
+            player.SetGame(this);
+            player.SetInput(input);
+            player.SetBrain(brain);
+            player.SetPosition(startPosition);
+            return player;
+        }
+
+        public IGeneticAlgorithmEntity[] GetPopulationOfBestEntities()
+        {
+            var entities = new IGeneticAlgorithmEntity[m_GaParameters.bestPopulationCount];
+            m_Players.Sort((a, b) =>
+            {
+                var fitA = a.CalculateFitness();
+                var fitB = b.CalculateFitness();
+                return fitB.CompareTo(fitA);
+            });
+            
+            for (var i = 0; i < entities.Length; i++)
+            {
+                entities[i] = m_Players[i];
+            }
+
+            return entities;
+        }
+        
+        public float GetAverageFitnessOfCurrentPopulation()
+        {
+            return m_Players.Average(e => e.CalculateFitness());
+        }
+        
+        public void Simulate()
+        {
+            m_IsStarted = true;
+        }
+        
+        
+        
+        
+        
+        
 
         public CaptureTheFlagGameState GetState()
         {
@@ -98,29 +142,6 @@ namespace Capture_the_Flag
         public List<CaptureTheFlagPlayer> GetPlayers()
         {
             return m_Players;
-        }
-
-        public CaptureTheFlagPlayer[] GetBestPlayers()
-        {
-            var players = new CaptureTheFlagPlayer[m_GaParameters.bestPopulationCount];
-            m_Players.Sort((a, b) =>
-            {
-                var fitA = a.CalculateFitness();
-                var fitB = b.CalculateFitness();
-                return fitB.CompareTo(fitA);
-            });
-            
-            for (var i = 0; i < players.Length; i++)
-            {
-                players[i] = m_Players[i];
-            }
-
-            return players;
-        }
-
-        public float GetAveragePlayersFitness()
-        {
-            return m_Players.Average(e => e.CalculateFitness());
         }
     }
 }

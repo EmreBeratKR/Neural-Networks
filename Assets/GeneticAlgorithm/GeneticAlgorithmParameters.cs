@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Capture_the_Flag
+namespace GeneticAlgorithm
 {
     [Serializable]
     public struct GeneticAlgorithmParameters

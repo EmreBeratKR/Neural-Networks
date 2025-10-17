@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using GeneticAlgorithm;
 using UnityEngine;
 
 namespace Capture_the_Flag
 {
-    public class CaptureTheFlagPlayerBrain
+    public class CaptureTheFlagPlayerBrain : IGeneticAlgorithmBrain
     {
         public static CaptureTheFlagPlayerBrain New(int size)
         {
@@ -38,27 +39,32 @@ namespace Capture_the_Flag
             return Random.Range(0, 4);
         }
 
-
+        
+        public IGeneticAlgorithmBrain NewEmpty()
+        {
+            return New(0);
+        }
+        
         public int GetSize()
         {
             return m_Actions.Count;
         }
-
-        public int GetAction(int index)
-        {
-            return m_Actions[index];
-        }
-
+        
         public void IncreaseSize(int size)
         {
             AddRandomActions(size);
         }
-        
+
         public void AddAction(int action)
         {
             m_Actions.Add(action);
         }
-
+        
+        public int GetAction(int index)
+        {
+            return m_Actions[index];
+        }
+        
         public void Mutate(float rate)
         {
             var size = GetSize();

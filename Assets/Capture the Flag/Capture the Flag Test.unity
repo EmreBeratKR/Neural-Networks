@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b6b4707c114790a45e70561510be44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 845905130}
+  _environmentGameObject: {fileID: 845905129}
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
   _parameters:

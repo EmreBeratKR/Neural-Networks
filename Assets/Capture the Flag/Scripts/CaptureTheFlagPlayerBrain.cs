@@ -59,9 +59,10 @@ namespace Capture_the_Flag
             m_Actions.Add(action);
         }
 
-        public void Mutate(int batch, float rate)
+        public void Mutate(float rate)
         {
-            for (var i = GetSize() - batch; i < GetSize(); i++)
+            var size = GetSize();
+            for (var i = 0; i < size; i++)
             {
                 if (rate < Random.Range(0f, 1f)) continue;
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 namespace Capture_the_Flag
@@ -9,21 +9,26 @@ namespace Capture_the_Flag
     public class GeneticAlgorithmRunner : MonoBehaviour
     {
         [SerializeField] private CaptureTheFlagGame _game;
-        [SerializeField] private GeneticAlgorithmParameters _parameters;
         [SerializeField] private TMP_Text _generationNumberText;
         [SerializeField] private TMP_Text _brainSizeText;
-        [SerializeField] private SplineContainer _splineContainer;
-        [SerializeField] private int _fitnessGraphSampleCount;
+        [SerializeField] private GeneticAlgorithmParameters _parameters;
+        
+        [Header("Fitness Graph")]
         [SerializeField] private Vector2 _fitnessGraphScale;
+        [SerializeField] private Vector2 _fitnessGraphOffset;
+        [SerializeField] private float _fitnessGraphDotRadius;
 
 
+        private List<float> m_Fitnesses;
         private int m_GenerationNumber;
+        private int m_BrainSizeIncreaseCount;
         
         
         private void Start()
         {
             var brains = CreateInitialGenerationBrains();
 
+            m_Fitnesses = new List<float>();
             m_GenerationNumber = 1;
             UpdateGenerationNumberText(m_GenerationNumber);
             UpdateBrainSizeText(brains[0].GetSize());
@@ -40,39 +45,21 @@ namespace Capture_the_Flag
 
         private void OnDrawGizmos()
         {
-            float CalculateFitness(Vector2 position, bool collectedFirst, bool collectedSecond)
+            if (m_Fitnesses is not null)
             {
-                var flagPosition = _game.GetState().flagPosition;
-                var distance = Vector2.Distance(flagPosition, position);
-
-                var distanceFitness = 1f / (distance + 1f);
-                var firstBonusFitness = collectedFirst ? 1f : 0f;
-                var secondBonusFitness = collectedSecond ? 1f : 0f;
-
-                return distanceFitness * 0.8f + firstBonusFitness * 0.1f + secondBonusFitness * 0.1f;
-            }
-
-            var isFirst = false;
-            var isSecond = false;
-            for (var i = 0; i < _fitnessGraphSampleCount; i++)
-            {
-                var t = i / (float) (_fitnessGraphSampleCount - 1);
-                var localPoint = _splineContainer.Spline.EvaluatePosition(t);
-                var worldPoint = _splineContainer.transform.TransformPoint(localPoint);
-
-                if (!isFirst && Vector2.Distance(_splineContainer.transform.TransformPoint(_splineContainer.Spline.EvaluatePosition(0.2f)), worldPoint) < 0.5f)
-                {
-                    isFirst = true;
-                }
+                Gizmos.color = Handles.xAxisColor;
+                Gizmos.DrawLine(_fitnessGraphOffset, (Vector3) _fitnessGraphOffset + Vector3.right * _fitnessGraphScale.x);
                 
-                if (!isSecond && Vector2.Distance(_splineContainer.transform.TransformPoint(_splineContainer.Spline.EvaluatePosition(0.4f)), worldPoint) < 0.5f)
-                {
-                    isSecond = true;
-                }
+                Gizmos.color = Handles.yAxisColor;
+                Gizmos.DrawLine(_fitnessGraphOffset, (Vector3) _fitnessGraphOffset + Vector3.up * _fitnessGraphScale.y);
                 
-                var fitness = CalculateFitness(worldPoint, isFirst, isSecond);
-                Gizmos.color = Color.white;
-                Gizmos.DrawSphere(new Vector3(t * _fitnessGraphScale.x, fitness * _fitnessGraphScale.y, 0f), 0.01f);
+                for (var i = 0; i < m_Fitnesses.Count; i++)
+                {
+                    Gizmos.color = Color.white;
+                    var x = i * _fitnessGraphScale.x * 0.01f + _fitnessGraphOffset.x;
+                    var y = m_Fitnesses[i] * _fitnessGraphScale.y + _fitnessGraphOffset.y;
+                    Gizmos.DrawSphere(new Vector3(x, y, 0f), _fitnessGraphDotRadius);
+                }
             }
         }
 
@@ -82,6 +69,7 @@ namespace Capture_the_Flag
             var bestPlayers = _game.GetBestPlayers();
             var nextGenBrains = CreateNextGenerationBrains(bestPlayers);
 
+            m_Fitnesses.Add(_game.GetAveragePlayersFitness());
             m_GenerationNumber += 1;
             UpdateGenerationNumberText(m_GenerationNumber);
             _game.ResetState();
@@ -139,16 +127,19 @@ namespace Capture_the_Flag
 
             foreach (var brain in brains)
             {
-                brain.Mutate(_parameters.brainBatchSize, _parameters.mutationRate);
+                brain.Mutate(_parameters.mutationRate);
             }
 
-            if (m_GenerationNumber % _parameters.genPerBrainSizeIncrease == 0)
+            var brainMaxSizeNotReached = m_BrainSizeIncreaseCount < _parameters.maxBrainSizeIncreaseCount;
+            var isGenEligableToIncreaseBrainSize = m_GenerationNumber % _parameters.genPerBrainSizeIncrease == 0; 
+            if (brainMaxSizeNotReached && isGenEligableToIncreaseBrainSize)
             {
                 foreach (var brain in brains)
                 {
                     brain.IncreaseSize(_parameters.brainBatchSize);
                 }
                 UpdateBrainSizeText(brains[0].GetSize());
+                m_BrainSizeIncreaseCount += 1;
             }
 
             return brains;

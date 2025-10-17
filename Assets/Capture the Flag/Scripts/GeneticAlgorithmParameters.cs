@@ -11,6 +11,7 @@ namespace Capture_the_Flag
         public int bestPopulationCount;
         public int genPerBrainSizeIncrease;
         public int brainBatchSize;
+        public int maxBrainSizeIncreaseCount;
         [Range(0f, 1f)]
         public float mutationRate;
     }

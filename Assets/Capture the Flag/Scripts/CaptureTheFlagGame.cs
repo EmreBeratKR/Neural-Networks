@@ -89,6 +89,7 @@ namespace Capture_the_Flag
         {
             return new CaptureTheFlagGameState
             {
+                startPosition = _start.position,
                 flagPosition = _flag.GetPosition(),
                 isStarted = m_IsStarted
             };
@@ -115,6 +116,11 @@ namespace Capture_the_Flag
             }
 
             return players;
+        }
+
+        public float GetAveragePlayersFitness()
+        {
+            return m_Players.Average(e => e.CalculateFitness());
         }
     }
 }

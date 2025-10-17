@@ -141,14 +141,13 @@ namespace Capture_the_Flag
         public float CalculateFitness()
         {
             if (m_IsDead) return 0f;
-            
-            var position = (Vector2) transform.position;
-            var flagPosition = m_Game.GetState().flagPosition;
-            var secondPosition = new Vector2(0.750999987f, -3.71499991f);
-            var distance = Vector2.Distance(flagPosition, position);
-            var secondDistance = Vector2.Distance(secondPosition, position);
 
-            return 1f / (distance * 3f + secondDistance * 0.5f + 1f);
+            var position = (Vector2) transform.position;
+            var gameState = m_Game.GetState();
+            var flagPosition = gameState.flagPosition;
+            var distanceToFlag = Vector2.Distance(flagPosition, position);
+
+            return 1f / (1f + distanceToFlag);
         }
     }
 }

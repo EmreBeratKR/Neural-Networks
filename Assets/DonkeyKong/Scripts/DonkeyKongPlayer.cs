@@ -11,9 +11,9 @@ namespace DonkeyKong
         
         private void Update()
         {
-            const float speed = 3f;
-            const float gravity = -9.81f * 1f;
-            const float jumpSpeed = 5f;
+            const float speed = 1.5f;
+            const float gravity = -9.81f * 1.5f;
+            const float jumpSpeed = 4.45f;
             
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
@@ -24,17 +24,8 @@ namespace DonkeyKong
             {
                 transform.position += Vector3.left * (Time.deltaTime * speed);
             }
-
-            if (m_VerticalVelocity < 0f)
-            {
-                m_VerticalVelocity += gravity * Time.deltaTime * 2f;
-            }
-
-            else
-            {
-                m_VerticalVelocity += gravity * Time.deltaTime;
-            }
             
+            m_VerticalVelocity += gravity * Time.deltaTime;
             
             CollideWithGround();
             
@@ -88,6 +79,11 @@ namespace DonkeyKong
         public void SetGame(DonkeyKongGame game)
         {
             m_Game = game;
+        }
+
+        public void SetPosition(Vector2 position)
+        {
+            transform.position = position;
         }
     }
 }

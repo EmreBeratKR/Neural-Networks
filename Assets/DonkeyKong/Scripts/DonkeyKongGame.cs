@@ -9,6 +9,7 @@ namespace DonkeyKong
         
         
         private DonkeyKongGround[] m_Grounds;
+        private DonkeyKongLadder[] m_Ladders;
 
 
         private void Awake()
@@ -16,6 +17,7 @@ namespace DonkeyKong
             Application.targetFrameRate = 60;
             
             m_Grounds = GetComponentsInChildren<DonkeyKongGround>(true);
+            m_Ladders = GetComponentsInChildren<DonkeyKongLadder>(true);
             CreatePlayer();
         }
 
@@ -31,6 +33,11 @@ namespace DonkeyKong
         public DonkeyKongGround[] GetGrounds()
         {
             return m_Grounds;
+        }
+
+        public DonkeyKongLadder[] GetLadders()
+        {
+            return m_Ladders;
         }
     }
 }

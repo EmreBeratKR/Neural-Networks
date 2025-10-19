@@ -32,6 +32,7 @@ namespace DonkeyKong
             if (!IsPlaying()) return;
             
             DieIfCollidesWithBarrel();
+            DieIfCollidesWithMonkey();
             
             if (m_IsDead) return;
             
@@ -77,6 +78,20 @@ namespace DonkeyKong
                 {
                     Die();
                 }
+            }
+        }
+        
+        private void DieIfCollidesWithMonkey()
+        {
+            var monkey = m_Game.GetMonkey();
+            var center = GetCenter();
+            var radius = GetRadius();
+            var monkeyCenter = monkey.GetCenter();
+            var monkeySize = monkey.GetSize();
+
+            if (Collisions2D.CheckCircleAndAxisAlignedRect(center, radius, monkeyCenter, monkeySize))
+            {
+                Die();
             }
         }
 

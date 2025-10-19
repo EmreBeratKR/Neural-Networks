@@ -9,6 +9,8 @@ namespace DonkeyKong
         [SerializeField] private DonkeyKongGame _game;
         [SerializeField] private DonkeyKongBarrel _barrelPrefab;
         [SerializeField] private Transform _barrelSpawnPoint;
+        [SerializeField] private Vector2 _offset;
+        [SerializeField] private Vector2 _size;
 
 
         private List<DonkeyKongBarrel> m_Barrels;
@@ -24,6 +26,14 @@ namespace DonkeyKong
         private void OnDestroy()
         {
             DonkeyKongBarrel.OnAnyDestroyed -= OnBarrelDestroyed;
+        }
+
+        private void OnDrawGizmos()
+        {
+            var center = GetCenter();
+            var size = GetSize();
+            Gizmos.color = Color.black;
+            Gizmos.DrawWireCube(center, size);
         }
 
         private void Update()
@@ -55,6 +65,16 @@ namespace DonkeyKong
         }
 
 
+        public Vector2 GetCenter()
+        {
+            return (Vector2) transform.position + _offset;
+        }
+
+        public Vector2 GetSize()
+        {
+            return _size;
+        }
+        
         public List<DonkeyKongBarrel> GetBarrels()
         {
             return m_Barrels;

@@ -2384,6 +2384,8 @@ MonoBehaviour:
   _game: {fileID: 845905132}
   _barrelPrefab: {fileID: 2376696584563790404, guid: 918ef9267d9e942a0bf894d5d6360c6a, type: 3}
   _barrelSpawnPoint: {fileID: 1138529400}
+  _offset: {x: 0, y: 0.59}
+  _size: {x: 1.45, y: 1.15}
 --- !u!1001 &716569812
 PrefabInstance:
   m_ObjectHideFlags: 0

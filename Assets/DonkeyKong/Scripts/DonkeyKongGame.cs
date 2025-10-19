@@ -1,4 +1,3 @@
-using Physics;
 using UnityEngine;
 using Random = System.Random;
 
@@ -8,6 +7,7 @@ namespace DonkeyKong
     {
         [SerializeField] private Transform _startPoint;
         [SerializeField] private DonkeyKongPlayer _playerPrefab;
+        [SerializeField] private DonkeyKongConfig _config = DonkeyKongConfig.Default;
 
 
         private DonkeyKongPrincess m_Princess;
@@ -63,6 +63,11 @@ namespace DonkeyKong
         public DonkeyKongLadder[] GetLadders()
         {
             return m_Ladders;
+        }
+
+        public DonkeyKongConfig GetConfig()
+        {
+            return _config;
         }
 
         public bool RandomBool(float possibility)

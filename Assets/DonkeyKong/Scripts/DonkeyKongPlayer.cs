@@ -27,10 +27,6 @@ namespace DonkeyKong
 
         private void Update()
         {
-            const float speed = 1.5f;
-            const float gravity = -9.81f * 1.5f;
-            const float jumpSpeed = 4.45f;
-            
             if (!IsPlaying()) return;
             
             DieIfCollidesWithBarrel();
@@ -43,6 +39,31 @@ namespace DonkeyKong
             
             if (m_IsClimbingLadder) return;
             
+            HorizontalMovement();
+            ApplyGravity();
+            
+            CollideWithGround();
+            
+            Jump();
+            
+            transform.position += Vector3.up * (m_VerticalVelocity * Time.deltaTime);
+        }
+
+
+        private void Jump()
+        {
+            if (Input.GetKey(KeyCode.Space) && m_IsGrounded)
+            {
+                var gravity = Mathf.Abs(GetGravity());
+                var maxHeight = m_Game.GetConfig().playerJumpHeight;
+                var jumpSpeed = Mathf.Sqrt(2 * maxHeight * gravity);
+                m_VerticalVelocity = jumpSpeed;
+            }
+        }
+        
+        private void HorizontalMovement()
+        {
+            var speed = m_Game.GetConfig().playerHorizontalSpeed;
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 var position = transform.position;
@@ -58,20 +79,19 @@ namespace DonkeyKong
                 position.x = Mathf.Max(x, -4.14f);
                 transform.position = position;
             }
-            
-            m_VerticalVelocity += gravity * Time.deltaTime;
-            
-            CollideWithGround();
-            
-            if (Input.GetKey(KeyCode.Space) && m_IsGrounded)
-            {
-                m_VerticalVelocity = jumpSpeed;
-            }
-            
-            transform.position += Vector3.up * (m_VerticalVelocity * Time.deltaTime);
         }
 
-
+        private float GetGravity()
+        {
+            return -9.81f * m_Game.GetConfig().playerGravity;
+        }
+        
+        private void ApplyGravity()
+        {
+            var gravity = GetGravity();
+            m_VerticalVelocity += gravity * Time.deltaTime;
+        }
+        
         private void DieIfCollidesWithBarrel()
         {
             var barrels = m_Game.GetMonkey().GetBarrels();
@@ -161,7 +181,7 @@ namespace DonkeyKong
 
         private void UseLadder()
         {
-            const float climbSpeed = 1f;
+            var climbSpeed = m_Game.GetConfig().playerLadderClimbSpeed;
             var climbUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
             var climbDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
             var playerBottom = transform.position + Vector3.down * 0.03f;

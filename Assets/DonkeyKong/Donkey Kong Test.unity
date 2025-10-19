@@ -2967,6 +2967,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPoint: {fileID: 212778752}
   _playerPrefab: {fileID: 3080181331877092157, guid: 043c9fd16b6ceb94088d1bcfd739439b, type: 3}
+  _config:
+    playerHorizontalSpeed: 1.6
+    playerGravity: 1.3
+    playerJumpHeight: 0.6
+    barrelHorizontalSpeed: 2.5
+    barrelGravity: 1.5
 --- !u!1 &856437501
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ namespace DonkeyKong
 
         private void Update()
         {
-            const float barrelThrowInterval = 2.1f;
+            var barrelThrowInterval = _game.GetConfig().barrelThrowInterval;
             var elapsedTime = Time.time - m_LastThrowTime;
 
             if (elapsedTime > barrelThrowInterval)

@@ -39,8 +39,8 @@ namespace DonkeyKong
 
         private void Update()
         {
-            const float gravity = -9.81f * 1.5f;
-            const float speed = 2f;
+            var gravity = -9.81f * m_Game.GetConfig().barrelGravity;
+            var speed = m_Game.GetConfig().barrelHorizontalSpeed;
             
             TryFallFromLadder();
             
@@ -106,7 +106,7 @@ namespace DonkeyKong
         {
             if (m_IsFallingFromLadder)
             {
-                const float ladderFallSpeed = 2f;
+                var ladderFallSpeed = m_Game.GetConfig().barrelLadderFallSpeed;
                 transform.position += Vector3.down * (Time.deltaTime * ladderFallSpeed);
                 
                 var grounds = m_Game.GetGrounds();
@@ -147,7 +147,8 @@ namespace DonkeyKong
 
                 if (Collisions2D.CheckCircleAndAxisAlignedRect(position, 0f, enterRectCenter, enterRectSize))
                 {
-                    if (m_Game.RandomBool(0.15f))
+                    var barrelFallChance = m_Game.GetConfig().barrelLadderFallChance;
+                    if (m_Game.RandomBool(barrelFallChance))
                     {
                         m_IsFallingFromLadder = true;
                     }

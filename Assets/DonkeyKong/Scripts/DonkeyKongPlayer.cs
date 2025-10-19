@@ -3,17 +3,26 @@ using UnityEngine;
 
 namespace DonkeyKong
 {
+    public enum PlayerState
+    {
+        Idle,
+        Walk,
+        Jump,
+        ClimbLadder,
+        Win,
+        Dead
+    }
+    
     public class DonkeyKongPlayer : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
         [SerializeField] private Vector2 _offset;
         [SerializeField] private float _radius;
         
         
         private DonkeyKongGame m_Game;
+        private PlayerState m_State;
         private float m_VerticalVelocity;
-        private bool m_IsClimbingLadder;
-        private bool m_IsDead;
-        private bool m_IsWin;
         private bool m_IsGrounded;
 
 
@@ -27,7 +36,14 @@ namespace DonkeyKong
 
         private void Update()
         {
+            _animator.SetInteger("state", (int) m_State);
+            
             if (!IsPlaying()) return;
+
+            if (m_State is PlayerState.Jump && m_IsGrounded && m_VerticalVelocity <= 0f)
+            {
+                m_State = PlayerState.Idle;
+            }
             
             DieIfCollidesWithBarrel();
             DieIfCollidesWithMonkey();
@@ -37,7 +53,7 @@ namespace DonkeyKong
             
             UseLadder();
             
-            if (m_IsClimbingLadder) return;
+            if (m_State is PlayerState.ClimbLadder) return;
             
             HorizontalMovement();
             ApplyGravity();
@@ -50,6 +66,14 @@ namespace DonkeyKong
         }
 
 
+        private void UpdateFacingDirection(bool isRight)
+        {
+            var scale = _animator.transform.localScale;
+            var scaleX = Mathf.Abs(scale.x);
+            scale.x = scaleX * (isRight ? 1f : -1f);
+            _animator.transform.localScale = scale;
+        }
+        
         private void Jump()
         {
             if (Input.GetKey(KeyCode.Space) && m_IsGrounded)
@@ -58,18 +82,31 @@ namespace DonkeyKong
                 var maxHeight = m_Game.GetConfig().playerJumpHeight;
                 var jumpSpeed = Mathf.Sqrt(2 * maxHeight * gravity);
                 m_VerticalVelocity = jumpSpeed;
+                m_State = PlayerState.Jump;
             }
         }
         
         private void HorizontalMovement()
         {
             var speed = m_Game.GetConfig().playerHorizontalSpeed;
+
+            if (m_State is PlayerState.Walk)
+            {
+                m_State = PlayerState.Idle;
+            }
+            
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 var position = transform.position;
                 var x = position.x + Time.deltaTime * speed;
                 position.x = Mathf.Min(x, 4.14f);
                 transform.position = position;
+                UpdateFacingDirection(true);
+
+                if (m_State is not PlayerState.Jump)
+                {
+                    m_State = PlayerState.Walk;
+                }
             }
             
             else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -78,6 +115,12 @@ namespace DonkeyKong
                 var x = position.x - Time.deltaTime * speed;
                 position.x = Mathf.Max(x, -4.14f);
                 transform.position = position;
+                UpdateFacingDirection(false);
+                
+                if (m_State is not PlayerState.Jump)
+                {
+                    m_State = PlayerState.Walk;
+                }
             }
         }
 
@@ -141,13 +184,13 @@ namespace DonkeyKong
         private void Win()
         {
             Debug.Log("win");
-            m_IsWin = true;
+            m_State = PlayerState.Win;
         }
         
         private void Die()
         {
             Debug.Log("die");
-            m_IsDead = true;
+            m_State = PlayerState.Dead;
         }
 
         private void CollideWithGround()
@@ -181,12 +224,16 @@ namespace DonkeyKong
 
         private void UseLadder()
         {
+            if (m_State is PlayerState.Jump) return;
+            
             var climbSpeed = m_Game.GetConfig().playerLadderClimbSpeed;
             var climbUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
             var climbDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
             var playerBottom = transform.position + Vector3.down * 0.03f;
             
-            if (!m_IsClimbingLadder && climbUp)
+            _animator.SetFloat("ladderClimbSpeed", (climbUp || climbDown) ? 1f : 0f);
+            
+            if (m_State is not PlayerState.ClimbLadder && climbUp)
             {
                 var ladders = m_Game.GetLadders();
 
@@ -194,12 +241,12 @@ namespace DonkeyKong
                 {
                     if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetBottomRectCenter(), ladder.GetBottomRectSize()))
                     {
-                        m_IsClimbingLadder = true;
+                        m_State = PlayerState.ClimbLadder;
                     }
                 }
             }
             
-            if (!m_IsClimbingLadder && climbDown)
+            if (m_State is not PlayerState.ClimbLadder && climbDown)
             {
                 var ladders = m_Game.GetLadders();
 
@@ -207,12 +254,12 @@ namespace DonkeyKong
                 {
                     if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetTopRectCenter(), ladder.GetTopRectSize()))
                     {
-                        m_IsClimbingLadder = true;
+                        m_State = PlayerState.ClimbLadder;
                     }
                 }
             }
 
-            if (m_IsClimbingLadder)
+            if (m_State is PlayerState.ClimbLadder)
             {
                 if (!climbDown)
                 {
@@ -222,7 +269,7 @@ namespace DonkeyKong
                     {
                         if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetTopRectCenter(), ladder.GetTopRectSize()))
                         {
-                            m_IsClimbingLadder = false;
+                            m_State = PlayerState.Idle;
                         }
                     }
                 }
@@ -240,11 +287,11 @@ namespace DonkeyKong
                     {
                         if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetBottomRectCenter(), ladder.GetBottomRectSize()))
                         {
-                            m_IsClimbingLadder = false;
+                            m_State = PlayerState.Idle;
                         }
                     }
 
-                    if (m_IsClimbingLadder)
+                    if (m_State is PlayerState.ClimbLadder)
                     {
                         transform.position += Vector3.down * (Time.deltaTime * climbSpeed);
                     }
@@ -255,7 +302,7 @@ namespace DonkeyKong
 
         private bool IsPlaying()
         {
-            return !m_IsDead && !m_IsWin;
+            return m_State is not PlayerState.Win && m_State is not PlayerState.Dead;
         }
         
 

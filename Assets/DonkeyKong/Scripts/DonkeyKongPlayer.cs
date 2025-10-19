@@ -14,6 +14,7 @@ namespace DonkeyKong
         private bool m_IsClimbingLadder;
         private bool m_IsDead;
         private bool m_IsWin;
+        private bool m_IsGrounded;
 
 
         private void OnDrawGizmos()
@@ -62,7 +63,7 @@ namespace DonkeyKong
             
             CollideWithGround();
             
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && m_IsGrounded)
             {
                 m_VerticalVelocity = jumpSpeed;
             }
@@ -131,7 +132,11 @@ namespace DonkeyKong
 
         private void CollideWithGround()
         {
-            if (m_VerticalVelocity > 0f) return;
+            if (m_VerticalVelocity > 0f)
+            {
+                m_IsGrounded = false;
+                return;
+            }
 
             var grounds = m_Game.GetGrounds();
 
@@ -147,6 +152,7 @@ namespace DonkeyKong
 
                 if (Collisions2D.LineSegmentAndLineSegmentIntersection(rayStart, rayEnd, groundTopLeft, groundTopRight, out var point))
                 {
+                    m_IsGrounded = true;
                     m_VerticalVelocity = 0f;
                     transform.position = point;
                 }

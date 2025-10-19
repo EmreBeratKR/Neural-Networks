@@ -5,6 +5,9 @@ namespace GeneticAlgorithm
 {
     public class BasicGeneticAlgorithmBrain : IGeneticAlgorithmBrain
     {
+        private const int REP_COUNT = 10;
+        
+        
         public static BasicGeneticAlgorithmBrain New(int size, int actionTypeCount)
         {
             var brain = new BasicGeneticAlgorithmBrain
@@ -41,9 +44,17 @@ namespace GeneticAlgorithm
         }
 
         
-        public IGeneticAlgorithmBrain NewEmpty()
+        public IGeneticAlgorithmBrain Copy()
         {
-            return New(0, m_ActionTypeCount);
+            var size = GetSize() / REP_COUNT;
+            var brain = New(size, m_ActionTypeCount);
+
+            for (var i = 0; i < size; i++)
+            {
+                brain.SetAction(GetAction(i), i);
+            }
+
+            return brain;
         }
         
         public int GetSize()
@@ -58,7 +69,7 @@ namespace GeneticAlgorithm
 
         public void AddAction(int action)
         {
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < REP_COUNT; i++)
             {
                 m_Actions.Add(action);
             }
@@ -67,6 +78,11 @@ namespace GeneticAlgorithm
         public int GetAction(int index)
         {
             return m_Actions[index];
+        }
+
+        public void SetAction(int action, int index)
+        {
+            m_Actions[index] = action;
         }
         
         public void Mutate(float rate)

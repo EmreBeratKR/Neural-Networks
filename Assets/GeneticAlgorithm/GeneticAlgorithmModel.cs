@@ -138,12 +138,15 @@ namespace GeneticAlgorithm
         
         private IGeneticAlgorithmBrain ReproduceBrain(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
         {
-            var brain = a.NewEmpty();
-            var size = Mathf.Min(a.GetSize(), b.GetSize());
+            var brain = a.Copy();
+            var size = brain.GetSize();
             
             for (var i = 0; i < size; i++)
             {
-                brain.AddAction(Random.Range(0f, 1f) < 0.5f ? a.GetAction(i) : b.GetAction(i));
+                if (Random.Range(0f, 1f) < 0.5f)
+                {
+                    brain.SetAction(b.GetAction(i), i);
+                }
             }
 
             return brain;

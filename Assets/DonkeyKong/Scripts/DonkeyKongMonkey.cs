@@ -9,15 +9,27 @@ namespace DonkeyKong
         [SerializeField] private Transform _barrelSpawnPoint;
 
 
+        private float m_LastThrowTime;
+        
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            const float barrelThrowInterval = 2.1f;
+            var elapsedTime = Time.time - m_LastThrowTime;
+
+            if (elapsedTime > barrelThrowInterval)
             {
-                var position = _barrelSpawnPoint.position;
-                var barrel = Instantiate(_barrelPrefab);
-                barrel.SetGame(_game);
-                barrel.SetPosition(position);
+                m_LastThrowTime = Time.time;
+                ThrowBarrel();
             }
+        }
+
+        private void ThrowBarrel()
+        {
+            var position = _barrelSpawnPoint.position;
+            var barrel = Instantiate(_barrelPrefab);
+            barrel.SetGame(_game);
+            barrel.SetPosition(position);
         }
     }
 }

@@ -6,6 +6,8 @@ namespace DonkeyKong
     [Serializable]
     public struct DonkeyKongConfig
     {
+        [Header("============GENERAL===========")]
+        public int seed;
         [Header("============PLAYER============")]
         public float playerHorizontalSpeed;
         public float playerGravity;
@@ -22,6 +24,7 @@ namespace DonkeyKong
 
         public static DonkeyKongConfig Default => new()
         {
+            seed = 256,
             playerHorizontalSpeed = 1.6f,
             playerGravity = 1.3f,
             playerJumpHeight = 0.6f,

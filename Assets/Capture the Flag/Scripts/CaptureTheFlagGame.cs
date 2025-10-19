@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneticAlgorithm;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Capture_the_Flag
 {
@@ -79,7 +78,7 @@ namespace Capture_the_Flag
 
         public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
         {
-            var brain = CaptureTheFlagPlayerBrain.New(brainSize);
+            var brain = BasicGeneticAlgorithmBrain.New(brainSize, 4);
             return CreateEntityWithBrain(brain);
         }
         

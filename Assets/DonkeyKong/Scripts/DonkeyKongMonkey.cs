@@ -87,5 +87,16 @@ namespace DonkeyKong
         {
             return m_Barrels;
         }
+
+        public void ResetState()
+        {
+            foreach (var barrel in m_Barrels)
+            {
+                Destroy(barrel.gameObject);
+            }
+            m_Barrels.Clear();
+            m_Throwing = false;
+            m_LastThrowTime = Time.time;
+        }
     }
 }

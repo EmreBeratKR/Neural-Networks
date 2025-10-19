@@ -1,15 +1,15 @@
 using System.Collections.Generic;
-using GeneticAlgorithm;
 using UnityEngine;
 
-namespace Capture_the_Flag
+namespace GeneticAlgorithm
 {
-    public class CaptureTheFlagPlayerBrain : IGeneticAlgorithmBrain
+    public class BasicGeneticAlgorithmBrain : IGeneticAlgorithmBrain
     {
-        public static CaptureTheFlagPlayerBrain New(int size)
+        public static BasicGeneticAlgorithmBrain New(int size, int actionTypeCount)
         {
-            var brain = new CaptureTheFlagPlayerBrain
+            var brain = new BasicGeneticAlgorithmBrain
             {
+                m_ActionTypeCount = actionTypeCount,
                 m_Actions = new List<int>(size)
             };
             brain.AddRandomActions(size);
@@ -17,6 +17,7 @@ namespace Capture_the_Flag
         }
 
 
+        private int m_ActionTypeCount;
         private List<int> m_Actions;
 
 
@@ -36,13 +37,13 @@ namespace Capture_the_Flag
 
         private int GetRandomAction()
         {
-            return Random.Range(0, 4);
+            return Random.Range(0, m_ActionTypeCount);
         }
 
         
         public IGeneticAlgorithmBrain NewEmpty()
         {
-            return New(0);
+            return New(0, m_ActionTypeCount);
         }
         
         public int GetSize()
@@ -57,7 +58,10 @@ namespace Capture_the_Flag
 
         public void AddAction(int action)
         {
-            m_Actions.Add(action);
+            for (var i = 0; i < 10; i++)
+            {
+                m_Actions.Add(action);
+            }
         }
         
         public int GetAction(int index)

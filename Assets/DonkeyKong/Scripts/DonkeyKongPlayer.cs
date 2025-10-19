@@ -1,3 +1,5 @@
+using System;
+using GeneticAlgorithm;
 using Physics;
 using UnityEngine;
 
@@ -13,17 +15,25 @@ namespace DonkeyKong
         Dead
     }
     
-    public class DonkeyKongPlayer : MonoBehaviour
+    public class DonkeyKongPlayer : MonoBehaviour,
+        IGeneticAlgorithmEntity
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Vector2 _offset;
         [SerializeField] private float _radius;
+
         
+        public static event Action<DonkeyKongPlayer> OnAnyStop;
         
+
+        private IDonkeyKongPlayerInput m_Input;
+        private IGeneticAlgorithmBrain m_Brain;
         private DonkeyKongGame m_Game;
         private PlayerState m_State;
         private float m_VerticalVelocity;
         private bool m_IsGrounded;
+        private int m_FrameIndex = -1;
+        private bool m_IsStop;
 
 
         private void OnDrawGizmos()
@@ -36,6 +46,15 @@ namespace DonkeyKong
 
         private void Update()
         {
+            if (!m_Game.IsStarted()) return;
+
+            if (transform.position.y < -10f)
+            {
+                Die();
+                return;
+            }
+            
+            m_FrameIndex += 1;
             _animator.SetInteger("state", (int) m_State);
             
             if (!IsPlaying()) return;
@@ -76,7 +95,7 @@ namespace DonkeyKong
         
         private void Jump()
         {
-            if (Input.GetKey(KeyCode.Space) && m_IsGrounded)
+            if (m_Input.IsJump() && m_IsGrounded)
             {
                 var gravity = Mathf.Abs(GetGravity());
                 var maxHeight = m_Game.GetConfig().playerJumpHeight;
@@ -95,7 +114,7 @@ namespace DonkeyKong
                 m_State = PlayerState.Idle;
             }
             
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            if (m_Input.IsGoRight())
             {
                 var position = transform.position;
                 var x = position.x + Time.deltaTime * speed;
@@ -109,7 +128,7 @@ namespace DonkeyKong
                 }
             }
             
-            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            else if (m_Input.IsGoLeft())
             {
                 var position = transform.position;
                 var x = position.x - Time.deltaTime * speed;
@@ -139,18 +158,22 @@ namespace DonkeyKong
         {
             var barrels = m_Game.GetMonkey().GetBarrels();
 
-            foreach (var barrel in barrels)
+            try
             {
-                var center = GetCenter();
-                var radius = GetRadius();
-                var barrelCenter = barrel.GetCenter();
-                var barrelRadius = barrel.GetRadius();
-
-                if (Collisions2D.CircleAndCircleIntersection(center, radius, barrelCenter, barrelRadius))
+                foreach (var barrel in barrels)
                 {
-                    Die();
+                    var center = GetCenter();
+                    var radius = GetRadius();
+                    var barrelCenter = barrel.GetCenter();
+                    var barrelRadius = barrel.GetRadius();
+
+                    if (Collisions2D.CircleAndCircleIntersection(center, radius, barrelCenter, barrelRadius))
+                    {
+                        Die();
+                    }
                 }
             }
+            catch (Exception) { /* ignored */ }
         }
         
         private void DieIfCollidesWithMonkey()
@@ -183,14 +206,14 @@ namespace DonkeyKong
 
         private void Win()
         {
-            Debug.Log("win");
             m_State = PlayerState.Win;
+            Stop();
         }
         
         private void Die()
         {
-            Debug.Log("die");
             m_State = PlayerState.Dead;
+            Stop();
         }
 
         private void CollideWithGround()
@@ -227,8 +250,8 @@ namespace DonkeyKong
             if (m_State is PlayerState.Jump) return;
             
             var climbSpeed = m_Game.GetConfig().playerLadderClimbSpeed;
-            var climbUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-            var climbDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+            var climbUp = m_Input.IsLadderUp();
+            var climbDown = m_Input.IsLadderDown();
             var playerBottom = transform.position + Vector3.down * 0.03f;
             
             _animator.SetFloat("ladderClimbSpeed", (climbUp || climbDown) ? 1f : 0f);
@@ -324,6 +347,49 @@ namespace DonkeyKong
         public float GetRadius()
         {
             return _radius;
+        }
+        
+        public IGeneticAlgorithmBrain GetBrain()
+        {
+            return m_Brain;
+        }
+        
+        public void SetBrain(IGeneticAlgorithmBrain brain)
+        {
+            m_Brain = brain;
+        }
+
+        public void SetInput(IDonkeyKongPlayerInput input)
+        {
+            m_Input = input;
+        }
+
+        public bool IsDone()
+        {
+            if (m_IsStop) return true;
+            return m_State is PlayerState.Win or PlayerState.Dead;
+        }
+
+        public int GetFrameIndex()
+        {
+            return m_FrameIndex;
+        }
+        
+        public void Stop()
+        {
+            m_IsStop = true;
+            OnAnyStop?.Invoke(this);
+        }
+        
+        public float CalculateFitness()
+        {
+            if (m_State is PlayerState.Win) return 1f;
+
+            var position = (Vector2) transform.position;
+            var targetPosition = m_Game.GetPrincess().GetCenter();
+            var distanceToFlag = Vector2.Distance(targetPosition, position);
+
+            return 1f / (1f + distanceToFlag);
         }
     }
 }

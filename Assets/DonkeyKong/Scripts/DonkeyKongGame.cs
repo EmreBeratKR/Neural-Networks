@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = System.Random;
 
 namespace DonkeyKong
 {
@@ -9,14 +10,18 @@ namespace DonkeyKong
         
         
         private DonkeyKongGround[] m_Grounds;
+        private DonkeyKongWall[] m_Walls;
         private DonkeyKongLadder[] m_Ladders;
+        private Random m_Random;
 
 
         private void Awake()
         {
             Application.targetFrameRate = 60;
-            
+
+            m_Random = new Random(256);
             m_Grounds = GetComponentsInChildren<DonkeyKongGround>(true);
+            m_Walls = GetComponentsInChildren<DonkeyKongWall>(true);
             m_Ladders = GetComponentsInChildren<DonkeyKongLadder>(true);
             CreatePlayer();
         }
@@ -35,9 +40,19 @@ namespace DonkeyKong
             return m_Grounds;
         }
 
+        public DonkeyKongWall[] GetWalls()
+        {
+            return m_Walls;
+        }
+
         public DonkeyKongLadder[] GetLadders()
         {
             return m_Ladders;
+        }
+
+        public bool RandomBool(float possibility)
+        {
+            return m_Random.NextDouble() <= possibility;
         }
     }
 }

@@ -63,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 2098171132720417907}
   - {fileID: 1195022345989664776}
+  - {fileID: 5574057412415803459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4453597305262361468
@@ -79,6 +80,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bottom: {fileID: 1195022345989664776}
   _top: {fileID: 2098171132720417907}
+  _barrelEnter: {fileID: 5574057412415803459}
+--- !u!1 &5835205573484465701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5574057412415803459}
+  m_Layer: 0
+  m_Name: Barrel Enter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5574057412415803459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835205573484465701}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
+  m_LocalScale: {x: 0.097942084, y: 0.13375, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1111085679791223483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9008967245048991115
 GameObject:
   m_ObjectHideFlags: 0

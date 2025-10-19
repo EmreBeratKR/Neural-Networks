@@ -6,6 +6,7 @@ namespace DonkeyKong
     {
         [SerializeField] private Transform _bottom;
         [SerializeField] private Transform _top;
+        [SerializeField] private Transform _barrelEnter;
 
 
         private void OnDrawGizmos()
@@ -15,6 +16,9 @@ namespace DonkeyKong
             
             Gizmos.color = Color.blue;
             Gizmos.DrawCube(GetBottomRectCenter(), GetBottomRectSize());
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(GetBarrelEnterRectCenter(), GetBarrelEnterRectSize());
         }
 
 
@@ -36,6 +40,16 @@ namespace DonkeyKong
         public Vector2 GetBottomRectSize()
         {
             return _bottom.localScale;
+        }
+        
+        public Vector2 GetBarrelEnterRectCenter()
+        {
+            return _barrelEnter.position;
+        }
+        
+        public Vector2 GetBarrelEnterRectSize()
+        {
+            return _barrelEnter.localScale;
         }
     }
 }

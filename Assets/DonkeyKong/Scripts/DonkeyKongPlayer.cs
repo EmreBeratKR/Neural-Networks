@@ -44,12 +44,18 @@ namespace DonkeyKong
             
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                transform.position += Vector3.right * (Time.deltaTime * speed);
+                var position = transform.position;
+                var x = position.x + Time.deltaTime * speed;
+                position.x = Mathf.Min(x, 4.14f);
+                transform.position = position;
             }
             
             else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                transform.position += Vector3.left * (Time.deltaTime * speed);
+                var position = transform.position;
+                var x = position.x - Time.deltaTime * speed;
+                position.x = Mathf.Max(x, -4.14f);
+                transform.position = position;
             }
             
             m_VerticalVelocity += gravity * Time.deltaTime;

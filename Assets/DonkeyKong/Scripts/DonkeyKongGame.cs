@@ -1,3 +1,4 @@
+using Physics;
 using UnityEngine;
 using Random = System.Random;
 
@@ -7,8 +8,9 @@ namespace DonkeyKong
     {
         [SerializeField] private Transform _startPoint;
         [SerializeField] private DonkeyKongPlayer _playerPrefab;
-        
-        
+
+
+        private DonkeyKongMonkey m_Monkey;
         private DonkeyKongGround[] m_Grounds;
         private DonkeyKongWall[] m_Walls;
         private DonkeyKongLadder[] m_Ladders;
@@ -20,6 +22,7 @@ namespace DonkeyKong
             Application.targetFrameRate = 60;
 
             m_Random = new Random(256);
+            m_Monkey = GetComponentInChildren<DonkeyKongMonkey>(true);
             m_Grounds = GetComponentsInChildren<DonkeyKongGround>(true);
             m_Walls = GetComponentsInChildren<DonkeyKongWall>(true);
             m_Ladders = GetComponentsInChildren<DonkeyKongLadder>(true);
@@ -35,6 +38,11 @@ namespace DonkeyKong
         }
 
 
+        public DonkeyKongMonkey GetMonkey()
+        {
+            return m_Monkey;
+        }
+        
         public DonkeyKongGround[] GetGrounds()
         {
             return m_Grounds;

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DonkeyKong
@@ -9,8 +11,20 @@ namespace DonkeyKong
         [SerializeField] private Transform _barrelSpawnPoint;
 
 
+        private List<DonkeyKongBarrel> m_Barrels;
         private float m_LastThrowTime;
-        
+
+
+        private void Awake()
+        {
+            m_Barrels = new List<DonkeyKongBarrel>();
+            DonkeyKongBarrel.OnAnyDestroyed += OnBarrelDestroyed;
+        }
+
+        private void OnDestroy()
+        {
+            DonkeyKongBarrel.OnAnyDestroyed -= OnBarrelDestroyed;
+        }
 
         private void Update()
         {
@@ -24,12 +38,26 @@ namespace DonkeyKong
             }
         }
 
+
+        private void OnBarrelDestroyed(DonkeyKongBarrel barrel)
+        {
+            m_Barrels.Remove(barrel);
+        }
+        
+        
         private void ThrowBarrel()
         {
             var position = _barrelSpawnPoint.position;
             var barrel = Instantiate(_barrelPrefab);
             barrel.SetGame(_game);
             barrel.SetPosition(position);
+            m_Barrels.Add(barrel);
+        }
+
+
+        public List<DonkeyKongBarrel> GetBarrels()
+        {
+            return m_Barrels;
         }
     }
 }

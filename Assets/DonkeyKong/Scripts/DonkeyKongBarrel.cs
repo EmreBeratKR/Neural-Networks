@@ -7,6 +7,13 @@ namespace DonkeyKong
 {
     public class DonkeyKongBarrel : MonoBehaviour
     {
+        [SerializeField] private Vector2 _offset;
+        [SerializeField] private float _radius;
+        
+        
+        public static Action<DonkeyKongBarrel> OnAnyDestroyed;
+        
+        
         private DonkeyKongGame m_Game;
         private float m_VerticalVelocity;
         private bool m_IsGoingLeft;
@@ -19,6 +26,14 @@ namespace DonkeyKong
         private void Awake()
         {
             m_IgnoredLadders = new List<DonkeyKongLadder>();
+        }
+
+        private void OnDrawGizmos()
+        {
+            var center = GetCenter();
+            var radius = GetRadius();
+            Gizmos.color = Color.black;
+            Gizmos.DrawWireSphere(center, radius);
         }
 
 
@@ -132,7 +147,7 @@ namespace DonkeyKong
 
                 if (Collisions2D.CheckCircleAndAxisAlignedRect(position, 0f, enterRectCenter, enterRectSize))
                 {
-                    if (m_Game.RandomBool(0.3f))
+                    if (m_Game.RandomBool(0.15f))
                     {
                         m_IsFallingFromLadder = true;
                     }
@@ -148,6 +163,7 @@ namespace DonkeyKong
         {
             if (transform.position.y < -10f)
             {
+                OnAnyDestroyed?.Invoke(this);
                 Destroy(gameObject);
             }
         }
@@ -161,6 +177,16 @@ namespace DonkeyKong
         public void SetPosition(Vector2 position)
         {
             transform.position = position;
+        }
+
+        public Vector2 GetCenter()
+        {
+            return (Vector2) transform.position + _offset;
+        }
+
+        public float GetRadius()
+        {
+            return _radius;
         }
     }
 }

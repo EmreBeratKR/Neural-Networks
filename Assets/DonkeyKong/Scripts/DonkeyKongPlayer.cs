@@ -5,16 +5,35 @@ namespace DonkeyKong
 {
     public class DonkeyKongPlayer : MonoBehaviour
     {
+        [SerializeField] private Vector2 _offset;
+        [SerializeField] private float _radius;
+        
+        
         private DonkeyKongGame m_Game;
         private float m_VerticalVelocity;
         private bool m_IsClimbingLadder;
-        
-        
+        private bool m_IsDead;
+
+
+        private void OnDrawGizmos()
+        {
+            var center = GetCenter();
+            var radius = GetRadius();
+            Gizmos.color = Color.black;
+            Gizmos.DrawWireSphere(center, radius);
+        }
+
         private void Update()
         {
             const float speed = 1.5f;
             const float gravity = -9.81f * 1.5f;
             const float jumpSpeed = 4.45f;
+            
+            if (!IsPlaying()) return;
+            
+            DieIfCollidesWithBarrel();
+            
+            if (m_IsDead) return;
             
             UseLadder();
             
@@ -42,6 +61,29 @@ namespace DonkeyKong
             transform.position += Vector3.up * (m_VerticalVelocity * Time.deltaTime);
         }
 
+
+        private void DieIfCollidesWithBarrel()
+        {
+            var barrels = m_Game.GetMonkey().GetBarrels();
+
+            foreach (var barrel in barrels)
+            {
+                var center = GetCenter();
+                var radius = GetRadius();
+                var barrelCenter = barrel.GetCenter();
+                var barrelRadius = barrel.GetRadius();
+
+                if (Collisions2D.CircleAndCircleIntersection(center, radius, barrelCenter, barrelRadius))
+                {
+                    Die();
+                }
+            }
+        }
+
+        private void Die()
+        {
+            m_IsDead = true;
+        }
 
         private void CollideWithGround()
         {
@@ -140,6 +182,11 @@ namespace DonkeyKong
                 }
             }
         }
+
+        private bool IsPlaying()
+        {
+            return !m_IsDead;
+        }
         
 
         public void SetGame(DonkeyKongGame game)
@@ -150,6 +197,16 @@ namespace DonkeyKong
         public void SetPosition(Vector2 position)
         {
             transform.position = position;
+        }
+
+        public Vector2 GetCenter()
+        {
+            return (Vector2) transform.position + _offset;
+        }
+        
+        public float GetRadius()
+        {
+            return _radius;
         }
     }
 }

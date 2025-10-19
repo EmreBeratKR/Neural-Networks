@@ -4,6 +4,15 @@ namespace Physics
 {
     public static class Collisions2D
     {
+        public static bool CircleAndCircleIntersection(Vector2 p0, float radius0, Vector2 p1, float radius1)
+        {
+            var sqrDistance = Vector2.SqrMagnitude(p0 - p1);
+            var minDistance = radius0 + radius1;
+            var maxSqrDistance = minDistance * minDistance;
+
+            return sqrDistance < maxSqrDistance;
+        }
+        
         public static bool LineSegmentAndAxisAlignedRectIntersection(Vector2 lineSegmentStart, Vector2 lineSegmentEnd, Vector2 rectCenter, Vector2 rectSize, out Vector2 point)
         {
             var halfSize = rectSize * 0.5f;

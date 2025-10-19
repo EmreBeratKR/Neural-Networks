@@ -13,6 +13,7 @@ namespace DonkeyKong
         private float m_VerticalVelocity;
         private bool m_IsClimbingLadder;
         private bool m_IsDead;
+        private bool m_IsWin;
 
 
         private void OnDrawGizmos()
@@ -33,8 +34,9 @@ namespace DonkeyKong
             
             DieIfCollidesWithBarrel();
             DieIfCollidesWithMonkey();
+            WinIfCollidesWithPrincess();
             
-            if (m_IsDead) return;
+            if (!IsPlaying()) return;
             
             UseLadder();
             
@@ -94,9 +96,30 @@ namespace DonkeyKong
                 Die();
             }
         }
+        
+        private void WinIfCollidesWithPrincess()
+        {
+            var princess = m_Game.GetPrincess();
+            var center = GetCenter();
+            var radius = GetRadius();
+            var princessCenter = princess.GetCenter();
+            var princessSize = princess.GetSize();
 
+            if (Collisions2D.CheckCircleAndAxisAlignedRect(center, radius, princessCenter, princessSize))
+            {
+                Win();
+            }
+        }
+
+        private void Win()
+        {
+            Debug.Log("win");
+            m_IsWin = true;
+        }
+        
         private void Die()
         {
+            Debug.Log("die");
             m_IsDead = true;
         }
 
@@ -200,7 +223,7 @@ namespace DonkeyKong
 
         private bool IsPlaying()
         {
-            return !m_IsDead;
+            return !m_IsDead && !m_IsWin;
         }
         
 

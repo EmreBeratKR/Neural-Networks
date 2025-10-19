@@ -10,6 +10,7 @@ namespace DonkeyKong
         [SerializeField] private DonkeyKongPlayer _playerPrefab;
 
 
+        private DonkeyKongPrincess m_Princess;
         private DonkeyKongMonkey m_Monkey;
         private DonkeyKongGround[] m_Grounds;
         private DonkeyKongWall[] m_Walls;
@@ -22,6 +23,7 @@ namespace DonkeyKong
             Application.targetFrameRate = 60;
 
             m_Random = new Random(256);
+            m_Princess = GetComponentInChildren<DonkeyKongPrincess>(true);
             m_Monkey = GetComponentInChildren<DonkeyKongMonkey>(true);
             m_Grounds = GetComponentsInChildren<DonkeyKongGround>(true);
             m_Walls = GetComponentsInChildren<DonkeyKongWall>(true);
@@ -38,6 +40,11 @@ namespace DonkeyKong
         }
 
 
+        public DonkeyKongPrincess GetPrincess()
+        {
+            return m_Princess;
+        }
+        
         public DonkeyKongMonkey GetMonkey()
         {
             return m_Monkey;

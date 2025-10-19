@@ -27,9 +27,9 @@ namespace DonkeyKong
             playerJumpHeight = 0.6f,
             playerLadderClimbSpeed = 1.3f,
             barrelHorizontalSpeed = 2.5f,
-            barrelLadderFallSpeed = 2f,
+            barrelLadderFallSpeed = 2.5f,
             barrelGravity = 1.5f,
-            barrelLadderFallChance = 0.15f,
+            barrelLadderFallChance = 0.2f,
             barrelThrowInterval = 4.5f,
         };
     }

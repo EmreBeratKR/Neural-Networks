@@ -7,6 +7,7 @@ namespace DonkeyKong
 {
     public class DonkeyKongBarrel : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
         [SerializeField] private Vector2 _offset;
         [SerializeField] private float _radius;
         
@@ -44,6 +45,8 @@ namespace DonkeyKong
             
             TryFallFromLadder();
             
+            _animator.SetBool("isLadderRoll", m_IsFallingFromLadder);
+            
             if (m_IsFallingFromLadder) return;
             
             m_VerticalVelocity += gravity * Time.deltaTime;
@@ -52,6 +55,7 @@ namespace DonkeyKong
             CollideWithWall();
 
             var horizontalVelocity = speed * (m_IsGoingLeft ? -1f : 1f);
+            _animator.SetFloat("roll", m_IsGoingLeft ? 1f : -1f);
             transform.position += new Vector3(horizontalVelocity, m_VerticalVelocity) * Time.deltaTime;
             
             DestroyIfFell();

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ namespace DonkeyKong
     {
         [SerializeField] private DonkeyKongGame _game;
         [SerializeField] private DonkeyKongBarrel _barrelPrefab;
+        [SerializeField] private Animator _animator;
         [SerializeField] private Transform _barrelSpawnPoint;
         [SerializeField] private Vector2 _offset;
         [SerializeField] private Vector2 _size;
@@ -15,6 +15,7 @@ namespace DonkeyKong
 
         private List<DonkeyKongBarrel> m_Barrels;
         private float m_LastThrowTime;
+        private bool m_Throwing;
 
 
         private void Awake()
@@ -41,8 +42,15 @@ namespace DonkeyKong
             var barrelThrowInterval = _game.GetConfig().barrelThrowInterval;
             var elapsedTime = Time.time - m_LastThrowTime;
 
+            if (!m_Throwing && elapsedTime + 0.67f > barrelThrowInterval)
+            {
+                m_Throwing = true;
+                _animator.SetTrigger("throwBarrel");
+            }
+            
             if (elapsedTime > barrelThrowInterval)
             {
+                m_Throwing = false;
                 m_LastThrowTime = Time.time;
                 ThrowBarrel();
             }

@@ -428,7 +428,7 @@ MonoBehaviour:
   _parameters:
     framesPerSeconds: 60
     populationCount: 1000
-    bestPopulationCount: 10
+    bestPopulationCount: 1
     genPerBrainSizeIncrease: 2
     brainBatchSize: 5
     maxBrainSizeIncreaseCount: 50

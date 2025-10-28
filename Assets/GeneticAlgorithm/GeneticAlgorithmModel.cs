@@ -94,7 +94,7 @@ namespace GeneticAlgorithm
             var entities = new IGeneticAlgorithmEntity[m_Parameters.populationCount];
             var newEntityCount = m_Parameters.populationCount - currentGenEntities.Length;
             
-            for (var i = 0; i < newEntityCount; i++)
+            /*for (var i = 0; i < newEntityCount; i++)
             {
                 const int maxIter = 100;
                 var a = currentGenEntities[Random.Range(0, currentGenEntities.Length)].GetBrain();
@@ -114,6 +114,13 @@ namespace GeneticAlgorithm
             {
                 var brain = currentGenEntities[i].GetBrain();
                 entities[newEntityCount + i] = m_Environment.CreateEntityWithBrain(brain);
+            }*/
+
+            for (var i = 0; i < entities.Length; i++)
+            {
+                var brain = currentGenEntities[Random.Range(0, currentGenEntities.Length)].GetBrain();
+                var brainCopy = brain.Copy();
+                entities[i] = m_Environment.CreateEntityWithBrain(brainCopy);
             }
 
             foreach (var entity in entities)

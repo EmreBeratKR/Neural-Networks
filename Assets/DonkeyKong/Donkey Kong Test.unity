@@ -3092,11 +3092,11 @@ MonoBehaviour:
   _parameters:
     framesPerSeconds: 60
     populationCount: 500
-    bestPopulationCount: 100
+    bestPopulationCount: 1
     genPerBrainSizeIncrease: 5
     brainBatchSize: 10
     maxBrainSizeIncreaseCount: 50
-    mutationRate: 0.01
+    mutationRate: 0
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.67}
   _fitnessGraphDotRadius: 0.01

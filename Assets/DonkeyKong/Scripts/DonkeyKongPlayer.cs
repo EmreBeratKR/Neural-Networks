@@ -381,7 +381,7 @@ namespace DonkeyKong
             OnAnyStop?.Invoke(this);
         }
         
-        public float CalculateFitness()
+        public float GetFitness()
         {
             if (m_State is PlayerState.Win) return 1f;
 

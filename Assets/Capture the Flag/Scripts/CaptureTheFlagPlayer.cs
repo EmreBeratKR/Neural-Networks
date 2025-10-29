@@ -140,7 +140,7 @@ namespace Capture_the_Flag
             return m_IsCapturedFlag || m_IsStopped;
         }
 
-        public float CalculateFitness()
+        public float GetFitness()
         {
             if (m_IsDead) return 0f;
 

@@ -5,9 +5,6 @@ namespace GeneticAlgorithm
 {
     public class BasicGeneticAlgorithmBrain : IGeneticAlgorithmBrain
     {
-        private const int REP_COUNT = 10;
-        
-        
         public static BasicGeneticAlgorithmBrain New(int size, int actionTypeCount)
         {
             var brain = new BasicGeneticAlgorithmBrain
@@ -26,7 +23,7 @@ namespace GeneticAlgorithm
 
         private void AddRandomActions(int count)
         {
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 AddRandomAction();
             }
@@ -42,11 +39,16 @@ namespace GeneticAlgorithm
         {
             return Random.Range(0, m_ActionTypeCount);
         }
+        
+        private void AddAction(int action)
+        {
+            m_Actions.Add(action);
+        }
 
         
         public IGeneticAlgorithmBrain Copy()
         {
-            var size = GetSize() / REP_COUNT;
+            var size = GetSize();
             var brain = New(size, m_ActionTypeCount);
 
             for (var i = 0; i < size; i++)
@@ -62,19 +64,6 @@ namespace GeneticAlgorithm
             return m_Actions.Count;
         }
         
-        public void IncreaseSize(int size)
-        {
-            AddRandomActions(size);
-        }
-
-        public void AddAction(int action)
-        {
-            for (var i = 0; i < REP_COUNT; i++)
-            {
-                m_Actions.Add(action);
-            }
-        }
-        
         public int GetAction(int index)
         {
             return m_Actions[index];
@@ -85,15 +74,10 @@ namespace GeneticAlgorithm
             m_Actions[index] = action;
         }
         
-        public void Mutate(float rate)
+        public void Mutate()
         {
-            var size = GetSize();
-            for (var i = 0; i < size; i++)
-            {
-                if (rate < Random.Range(0f, 1f)) continue;
-
-                m_Actions[i] = GetRandomAction();
-            }
+            var index = Random.Range(0, GetSize());
+            m_Actions[index] = GetRandomAction();
         }
     }
 }

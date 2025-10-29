@@ -1,11 +1,11 @@
-using System;
 using GeneticAlgorithm;
 using TMPro;
 using UnityEngine;
 
-namespace Value_Match.Scripts
+namespace Value_Match
 {
-    public class ValueMatchPlayer : MonoBehaviour, IGeneticAlgorithmEntity
+    public class ValueMatchPlayer : MonoBehaviour, 
+        IGeneticAlgorithmEntity
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private TMP_Text _valueField;
@@ -57,7 +57,7 @@ namespace Value_Match.Scripts
             m_Game = game;
         }
 
-        public float CalculateFitness()
+        public float GetFitness()
         {
             var value = m_Brain.GetAction(0);
             var targetValue = m_Game.GetValue();

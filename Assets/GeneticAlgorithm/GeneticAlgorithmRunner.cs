@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace GeneticAlgorithm
         [SerializeField] private GameObject _environmentGameObject;
         [SerializeField] private TMP_Text _generationNumberText;
         [SerializeField] private TMP_Text _brainSizeText;
+        [SerializeField] private TMP_Text _bestFitnessText;
         [SerializeField] private GeneticAlgorithmParameters _parameters;
         
         [Header("Fitness Graph")]
@@ -65,6 +67,7 @@ namespace GeneticAlgorithm
         private void OnModelGenerationNumberChanged(int generationNumber)
         {
             UpdateGenerationNumberText(generationNumber);
+            UpdateBestFitnessText();
         }
 
         private void OnModelBrainSizeChanged(int brainSize)
@@ -81,6 +84,14 @@ namespace GeneticAlgorithm
         private void UpdateBrainSizeText(int value)
         {
             _brainSizeText.text = $"Brain Size: {value}";
+        }
+
+        private void UpdateBestFitnessText()
+        {
+            var best = m_Model.GetFitnessValues()
+                .OrderByDescending(e => e)
+                .FirstOrDefault();
+            _bestFitnessText.text = $"Best Fitness: {best:F}";
         }
     }
 }

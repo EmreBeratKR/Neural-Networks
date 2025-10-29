@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,9 +9,10 @@ namespace GeneticAlgorithm
     public class GeneticAlgorithmModel
     {
         public event Action<int> OnGenerationNumberChanged;
-        public event Action<int> OnBrainSizeChanged; 
-        
-        
+        public event Action<int> OnBrainSizeChanged;
+
+
+        private IGeneticAlgorithmEntity[] m_Population;
         private IGeneticAlgorithmEnvironment m_Environment;
         private GeneticAlgorithmParameters m_Parameters;
         private List<float> m_FitnessValues;
@@ -37,16 +39,16 @@ namespace GeneticAlgorithm
         
         public void Run()
         {
-            var population = CreateInitialPopulation();
+            m_Environment.OnSimulationDone += OnSimulationDone;
+            m_Environment.Initialize(m_Parameters);
+            
+            m_Population = CreateInitialPopulation();
 
             m_FitnessValues = new List<float>();
             SetGenerationNumber(1);
             m_BrainSizeIncreaseCount = 0;
-            OnBrainSizeChanged?.Invoke(population[0].GetBrain().GetSize());
-
-            m_Environment.OnSimulationDone += OnSimulationDone;
-            m_Environment.Initialize(m_Parameters);
-            m_Environment.SetPopulation(population);
+            OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
+            
             m_Environment.Simulate();
         }
 
@@ -58,14 +60,13 @@ namespace GeneticAlgorithm
 
         private void OnSimulationDone()
         {
-            var averageFitness = m_Environment.GetAverageFitnessOfCurrentPopulation();
-            var bestEntities = m_Environment.GetPopulationOfBestEntities();
-            var nextPopulation = CreateNextPopulation(bestEntities);
+            var averageFitness = m_Population.Average(e => e.GetFitness());
             
+            m_Population = CreateNextPopulation(m_Population);
             m_FitnessValues.Add(averageFitness);
             SetGenerationNumber(m_GenerationNumber + 1);
+            OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
             m_Environment.ResetState();
-            m_Environment.SetPopulation(nextPopulation);
             m_Environment.Simulate();
         }
         
@@ -89,68 +90,81 @@ namespace GeneticAlgorithm
             return entities;
         }
         
-        private IGeneticAlgorithmEntity[] CreateNextPopulation(IGeneticAlgorithmEntity[] currentGenEntities)
+        private IGeneticAlgorithmEntity[] CreateNextPopulation(IGeneticAlgorithmEntity[] population)
         {
-            var entities = new IGeneticAlgorithmEntity[m_Parameters.populationCount];
-            var newEntityCount = m_Parameters.populationCount - currentGenEntities.Length;
+            var newPopulation = new IGeneticAlgorithmEntity[population.Length];
+            var eliteCount = Mathf.RoundToInt(population.Length * m_Parameters.elitismRate);
+            var elites = population.OrderByDescending(e => e.GetFitness()).Take(eliteCount).ToArray();
+
+            for (var i = 0; i < eliteCount; i++)
+            {
+                var brain = elites[i].GetBrain().Copy();
+                var eliteCopy = m_Environment.CreateEntityWithBrain(brain);
+                newPopulation[i] = eliteCopy;
+            }
             
-            /*for (var i = 0; i < newEntityCount; i++)
+            for (var i = eliteCount; i < newPopulation.Length; i++)
             {
-                const int maxIter = 100;
-                var a = currentGenEntities[Random.Range(0, currentGenEntities.Length)].GetBrain();
-                var j = 0;
-                IGeneticAlgorithmBrain b;
-                do
-                {
-                    b = currentGenEntities[Random.Range(0, currentGenEntities.Length)].GetBrain();
-                    j++;
-                } while (b == a && j < maxIter);
-
-                var newBrain = ReproduceBrain(a, b);
-                entities[i] = m_Environment.CreateEntityWithBrain(newBrain);
+                var brain = ReproduceNewBrainFromPopulation(population, m_Parameters);
+                var child = m_Environment.CreateEntityWithBrain(brain);
+                newPopulation[i] = child;
             }
 
-            for (var i = 0; i < currentGenEntities.Length; i++)
-            {
-                var brain = currentGenEntities[i].GetBrain();
-                entities[newEntityCount + i] = m_Environment.CreateEntityWithBrain(brain);
-            }*/
-
-            for (var i = 0; i < entities.Length; i++)
-            {
-                var brain = currentGenEntities[Random.Range(0, currentGenEntities.Length)].GetBrain();
-                var brainCopy = brain.Copy();
-                entities[i] = m_Environment.CreateEntityWithBrain(brainCopy);
-            }
-
-            foreach (var entity in entities)
-            {
-                entity.GetBrain().Mutate(m_Parameters.mutationRate);
-            }
-
-            var brainMaxSizeNotReached = m_BrainSizeIncreaseCount < m_Parameters.maxBrainSizeIncreaseCount;
-            var isGenEligableToIncreaseBrainSize = m_GenerationNumber % m_Parameters.genPerBrainSizeIncrease == 0; 
-            if (brainMaxSizeNotReached && isGenEligableToIncreaseBrainSize)
-            {
-                foreach (var entity in entities)
-                {
-                    entity.GetBrain().IncreaseSize(m_Parameters.brainBatchSize);
-                }
-                OnBrainSizeChanged?.Invoke(entities[0].GetBrain().GetSize());
-                m_BrainSizeIncreaseCount += 1;
-            }
-
-            return entities;
+            return newPopulation;
         }
+
         
-        private IGeneticAlgorithmBrain ReproduceBrain(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
+        private static IGeneticAlgorithmEntity RouletteWheelSelection(IGeneticAlgorithmEntity[] population)
+        {
+            var fitnessSum = population.Sum(e => e.GetFitness());
+            var value = Random.Range(0f, fitnessSum);
+            var cumulative = 0f;
+
+            foreach (var entity in population)
+            {
+                cumulative += entity.GetFitness();
+
+                if (value <= cumulative)
+                {
+                    return entity;
+                }
+            }
+            
+            return population[^1];
+        }
+
+        private static IGeneticAlgorithmBrain ReproduceNewBrainFromPopulation(IGeneticAlgorithmEntity[] population, GeneticAlgorithmParameters parameters)
+        {
+            IGeneticAlgorithmBrain newBrain;
+            var a = RouletteWheelSelection(population).GetBrain();
+            var b = RouletteWheelSelection(population).GetBrain();
+
+            if (Random.Range(0f, 1f) <= parameters.crossoverRate)
+            {
+                newBrain = SinglePointCrossover(a, b);
+            }
+            else
+            {
+                newBrain = Random.Range(0f, 1f) <= 0.5f ? a.Copy() : b.Copy();
+            }
+
+            if (Random.Range(0f, 1f) <= parameters.mutationRate)
+            {
+                newBrain.Mutate();
+            }
+
+            return newBrain;
+        }
+
+        private static IGeneticAlgorithmBrain SinglePointCrossover(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
         {
             var brain = a.Copy();
-            var size = brain.GetSize();
+            var brainSize = brain.GetSize();
+            var crossoverPoint = Random.Range(0, brainSize);
             
-            for (var i = 0; i < size; i++)
+            for (var i = 0; i < brainSize; i++)
             {
-                if (Random.Range(0f, 1f) < 0.5f)
+                if (i < crossoverPoint)
                 {
                     brain.SetAction(b.GetAction(i), i);
                 }

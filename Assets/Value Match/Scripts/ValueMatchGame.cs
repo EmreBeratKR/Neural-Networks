@@ -5,7 +5,7 @@ using GeneticAlgorithm;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Value_Match.Scripts
+namespace Value_Match
 {
     public class ValueMatchGame : MonoBehaviour, IGeneticAlgorithmEnvironment
     {
@@ -47,28 +47,13 @@ namespace Value_Match.Scripts
 
         public void ResetState()
         {
-            foreach (var player in m_Players)
+            var oldPopulation = m_Players.Take(m_Parameters.populationCount);
+            var newPopulation = m_Players.Skip(m_Parameters.populationCount).ToList();
+            foreach (var player in oldPopulation)
             {
                 Destroy(player.gameObject);
             }
-            m_Players.Clear();
-        }
-
-        public void SetPopulation(IGeneticAlgorithmEntity[] population)
-        {
-            var scale = 0.9f;
-            var offset = Mathf.RoundToInt(Mathf.Sqrt(population.Length)) * scale * 0.5f;
-            
-            foreach (var entity in population)
-            {
-                var x = m_Players.Count / 10 - offset;
-                var y = m_Players.Count % 10 - offset;
-                var player = (ValueMatchPlayer) entity;
-                var position = new Vector2(x, y) * scale;
-                player.SetPosition(position);
-                player.SetScale(scale);
-                m_Players.Add(player);
-            }
+            m_Players = newPopulation;
         }
 
         public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
@@ -83,35 +68,25 @@ namespace Value_Match.Scripts
             
             player.SetGame(this);
             player.SetBrain(brain);
-            return player;
-        }
-
-        public IGeneticAlgorithmEntity[] GetPopulationOfBestEntities()
-        {
-            var entities = new IGeneticAlgorithmEntity[m_Parameters.bestPopulationCount];
-            m_Players.Sort((a, b) =>
-            {
-                var fitA = a.CalculateFitness();
-                var fitB = b.CalculateFitness();
-                return fitB.CompareTo(fitA);
-            });
+            m_Players.Add(player);
             
-            for (var i = 0; i < entities.Length; i++)
-            {
-                entities[i] = m_Players[i];
-            }
-
-            return entities;
-        }
-
-        public float GetAverageFitnessOfCurrentPopulation()
-        {
-            return m_Players.Average(e => e.CalculateFitness());
+            return player;
         }
 
         public void Simulate()
         {
+            var scale = 0.9f * 100f / m_Parameters.populationCount;
+            var offset = Mathf.RoundToInt(Mathf.Sqrt(m_Parameters.populationCount)) * scale * 0.5f;
+
+            for (var i = 0; i < m_Players.Count; i++)
+            {
+                var x = i / 10 - offset;
+                var y = i % 10 - offset;
+                var position = new Vector2(x, y) * scale;
             
+                m_Players[i].SetPosition(position);
+                m_Players[i].SetScale(scale);
+            }
         }
         
         public float GetValue()

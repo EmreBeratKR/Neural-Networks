@@ -115,8 +115,8 @@ namespace DonkeyKong
             var entities = new IGeneticAlgorithmEntity[m_GaParameters.bestPopulationCount];
             m_Players.Sort((a, b) =>
             {
-                var fitA = a.CalculateFitness();
-                var fitB = b.CalculateFitness();
+                var fitA = a.GetFitness();
+                var fitB = b.GetFitness();
                 return fitB.CompareTo(fitA);
             });
             
@@ -126,11 +126,6 @@ namespace DonkeyKong
             }
 
             return entities;
-        }
-
-        public float GetAverageFitnessOfCurrentPopulation()
-        {
-            return m_Players.Average(e => e.CalculateFitness());
         }
 
         public void Simulate()

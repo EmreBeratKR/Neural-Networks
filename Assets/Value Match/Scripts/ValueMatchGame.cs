@@ -10,6 +10,7 @@ namespace Value_Match
     public class ValueMatchGame : MonoBehaviour, IGeneticAlgorithmEnvironment
     {
         [SerializeField] private ValueMatchPlayer _playerPrefab;
+        [SerializeField] private float _timer;
         
         
         public event Action OnSimulationDone;
@@ -25,7 +26,7 @@ namespace Value_Match
         {
             var elapsedTime = Time.time - m_Time;
             
-            if (elapsedTime < 1f) return;
+            if (elapsedTime < _timer) return;
             
             m_Time = Time.time;
             OnSimulationDone?.Invoke();

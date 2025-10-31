@@ -97,7 +97,12 @@ namespace Capture_the_Flag
         {
             return m_Brain;
         }
-        
+
+        public void ResetState()
+        {
+            
+        }
+
         public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;

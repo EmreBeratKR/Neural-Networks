@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 namespace Value_Match
 {
-    public class ValueMatchGame : MonoBehaviour, IGeneticAlgorithmEnvironment
+    public class ValueMatchGame : MonoBehaviour, 
+        IGeneticAlgorithmEnvironment
     {
         [SerializeField] private ValueMatchPlayer _playerPrefab;
         [SerializeField] private float _timer;
@@ -39,50 +40,51 @@ namespace Value_Match
             m_Players = new List<ValueMatchPlayer>();
             m_Value = Random.Range(0, 256);
             
-            var player = Instantiate(_playerPrefab);
+            var dummy = Instantiate(_playerPrefab, transform);
             
-            player.SetGame(this);
-            player.SetPosition(new Vector2(-7f, 0f));
-            player.SetValue(m_Value);
+            dummy.SetGame(this);
+            dummy.SetPosition(new Vector2(-7f, 0f));
+            dummy.SetValue(m_Value);
+
+            for (var i = 0; i < parameters.populationCount; i++)
+            {
+                var player = Instantiate(_playerPrefab);
+            
+                player.SetGame(this);
+                m_Players.Add(player);
+            }
         }
 
         public void ResetState()
         {
-            var oldPopulation = m_Players.Take(m_Parameters.populationCount);
-            var newPopulation = m_Players.Skip(m_Parameters.populationCount).ToList();
-            foreach (var player in oldPopulation)
-            {
-                Destroy(player.gameObject);
-            }
-            m_Players = newPopulation;
+            
         }
 
-        public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
+        public IGeneticAlgorithmEntity[] GetPopulationPool()
         {
-            var brain = BasicGeneticAlgorithmBrain.New(1, 256);
-            return CreateEntityWithBrain(brain);
+            return m_Players.Cast<IGeneticAlgorithmEntity>().ToArray();
         }
 
-        public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
+        public IGeneticAlgorithmBrain CreateBrainWithSize(int brainSize)
         {
-            var player = Instantiate(_playerPrefab);
-            
-            player.SetGame(this);
-            player.SetBrain(brain);
-            m_Players.Add(player);
-            
-            return player;
+            return BasicGeneticAlgorithmBrain.New(1, 256);
         }
 
         public void Simulate()
         {
-            var scale = 0.9f * 100f / m_Parameters.populationCount;
-            var offset = Mathf.RoundToInt(Mathf.Sqrt(m_Parameters.populationCount)) * scale * 0.5f;
+            var edge = Mathf.RoundToInt(Mathf.Sqrt(m_Parameters.populationCount));
+            var scale = 0.9f * 10f / edge;
+            var offset = (edge - 1) * 0.5f;
 
+            m_Players.Sort((a, b) =>
+            {
+                return -1 * b.GetFitness().CompareTo(a.GetFitness());
+            });
+            
             for (var i = 0; i < m_Players.Count; i++)
             {
-                var x = i / 10 - offset;
-                var y = i % 10 - offset;
+                var x = i % edge - offset;
+                var y = i / edge - offset;
                 var position = new Vector2(x, y) * scale;
             
                 m_Players[i].SetPosition(position);

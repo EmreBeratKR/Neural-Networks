@@ -353,7 +353,12 @@ namespace DonkeyKong
         {
             return m_Brain;
         }
-        
+
+        public void ResetState()
+        {
+            
+        }
+
         public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;
@@ -377,6 +382,8 @@ namespace DonkeyKong
         
         public void Stop()
         {
+            if (m_IsStop) return;
+            
             m_IsStop = true;
             OnAnyStop?.Invoke(this);
         }

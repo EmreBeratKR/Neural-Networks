@@ -425,14 +425,16 @@ MonoBehaviour:
   _environmentGameObject: {fileID: 845905129}
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
+  _bestFitnessText: {fileID: 0}
   _parameters:
     framesPerSeconds: 60
     populationCount: 1000
-    bestPopulationCount: 1
     genPerBrainSizeIncrease: 2
     brainBatchSize: 5
     maxBrainSizeIncreaseCount: 50
+    elitismRate: 0
     mutationRate: 0.01
+    crossoverRate: 0
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.67}
   _fitnessGraphDotRadius: 0.01
@@ -726,11 +728,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6189376660036375473, guid: d2e0812d1661aff40b6a4033274a141e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8
+      value: 5.88
       objectReference: {fileID: 0}
     - target: {fileID: 6189376660036375473, guid: d2e0812d1661aff40b6a4033274a141e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.55
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 6189376660036375473, guid: d2e0812d1661aff40b6a4033274a141e, type: 3}
       propertyPath: m_LocalPosition.z

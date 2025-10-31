@@ -30,6 +30,12 @@ namespace Value_Match
             return m_Brain;
         }
 
+        public void ResetState()
+        {
+            var value = (byte) m_Brain.GetAction(0);
+            SetValue(value);
+        }
+
         public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;

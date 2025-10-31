@@ -73,31 +73,30 @@ namespace DonkeyKong
         {
             var config = GetConfig();
 
-            foreach (var player in m_Players)
+            var oldPopulation = m_Players.Take(m_GaParameters.populationCount);
+            var newPopulation = m_Players.Skip(m_GaParameters.populationCount).ToList();
+            foreach (var player in oldPopulation)
             {
                 Destroy(player.gameObject);
             }
-            m_Players.Clear();
+            m_Players = newPopulation;
+            
             m_IsStarted = false;
             m_Random = new Random(config.seed);
             m_Monkey.ResetState();
         }
 
-        public void SetPopulation(IGeneticAlgorithmEntity[] population)
+        public IGeneticAlgorithmEntity[] GetPopulationPool()
         {
-            foreach (var entity in population)
-            {
-                m_Players.Add((DonkeyKongPlayer) entity);
-            }
+            return m_Players.Cast<IGeneticAlgorithmEntity>().ToArray();
         }
 
-        public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
+        public IGeneticAlgorithmBrain CreateBrainWithSize(int brainSize)
         {
-            var brain = BasicGeneticAlgorithmBrain.New(brainSize, 6);
-            return CreateEntityWithBrain(brain);
+            return BasicGeneticAlgorithmBrain.New(brainSize, 6);
         }
 
-        public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
+        /*public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
         {
             var startPosition = _startPoint.position;
             var player = Instantiate(_playerPrefab);
@@ -108,25 +107,7 @@ namespace DonkeyKong
             player.SetBrain(brain);
             player.SetPosition(startPosition);
             return player;
-        }
-
-        public IGeneticAlgorithmEntity[] GetPopulationOfBestEntities()
-        {
-            var entities = new IGeneticAlgorithmEntity[m_GaParameters.bestPopulationCount];
-            m_Players.Sort((a, b) =>
-            {
-                var fitA = a.GetFitness();
-                var fitB = b.GetFitness();
-                return fitB.CompareTo(fitA);
-            });
-            
-            for (var i = 0; i < entities.Length; i++)
-            {
-                entities[i] = m_Players[i];
-            }
-
-            return entities;
-        }
+        }*/
 
         public void Simulate()
         {

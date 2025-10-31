@@ -6,8 +6,8 @@ namespace GeneticAlgorithm
     {
         void Initialize(GeneticAlgorithmParameters parameters);
         void ResetState();
-        IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize);
-        IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain);
+        IGeneticAlgorithmEntity[] GetPopulationPool();
+        IGeneticAlgorithmBrain CreateBrainWithSize(int brainSize);
         void Simulate();
         event Action OnSimulationDone;
     }

@@ -68,6 +68,11 @@ namespace Capture_the_Flag
             m_IsStarted = false;
         }
 
+        public IGeneticAlgorithmEntity[] GetPopulationPool()
+        {
+            return m_Players.Cast<IGeneticAlgorithmEntity>().ToArray();
+        }
+
         public void SetPopulation(IGeneticAlgorithmEntity[] population)
         {
             foreach (var entity in population)
@@ -76,13 +81,12 @@ namespace Capture_the_Flag
             }
         }
 
-        public IGeneticAlgorithmEntity CreateEntityWithBrainSize(int brainSize)
+        public IGeneticAlgorithmBrain CreateBrainWithSize(int brainSize)
         {
-            var brain = BasicGeneticAlgorithmBrain.New(brainSize, 4);
-            return CreateEntityWithBrain(brain);
+            return BasicGeneticAlgorithmBrain.New(brainSize, 4);
         }
         
-        public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
+        /*public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
         {
             var startPosition = _start.position;
             var player = Instantiate(_playerPrefab);
@@ -92,25 +96,7 @@ namespace Capture_the_Flag
             player.SetBrain(brain);
             player.SetPosition(startPosition);
             return player;
-        }
-
-        public IGeneticAlgorithmEntity[] GetPopulationOfBestEntities()
-        {
-            var entities = new IGeneticAlgorithmEntity[m_GaParameters.bestPopulationCount];
-            m_Players.Sort((a, b) =>
-            {
-                var fitA = a.GetFitness();
-                var fitB = b.GetFitness();
-                return fitB.CompareTo(fitA);
-            });
-            
-            for (var i = 0; i < entities.Length; i++)
-            {
-                entities[i] = m_Players[i];
-            }
-
-            return entities;
-        }
+        }*/
         
         public void Simulate()
         {

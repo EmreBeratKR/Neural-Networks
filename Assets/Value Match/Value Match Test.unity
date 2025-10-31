@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 6494753428583152477, guid: 231f595fa2d4e4815b0b0e468c44691f, type: 3}
-  _timer: 0.5
+  _timer: 0.1
 --- !u!1 &914861400
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,13 +464,12 @@ MonoBehaviour:
   _bestFitnessText: {fileID: 145553959}
   _parameters:
     framesPerSeconds: 1
-    populationCount: 100
-    bestPopulationCount: 50
+    populationCount: 900
     genPerBrainSizeIncrease: 1
     brainBatchSize: 1
     maxBrainSizeIncreaseCount: 0
-    elitismRate: 0
-    mutationRate: 0.1
+    elitismRate: 0.01
+    mutationRate: 0.05
     crossoverRate: 0
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}

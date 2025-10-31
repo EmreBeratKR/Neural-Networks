@@ -8,7 +8,6 @@ namespace GeneticAlgorithm
     {
         public int framesPerSeconds;
         public int populationCount;
-        public int bestPopulationCount;
         public int genPerBrainSizeIncrease;
         public int brainBatchSize;
         public int maxBrainSizeIncreaseCount;

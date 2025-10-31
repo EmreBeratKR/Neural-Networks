@@ -34,5 +34,10 @@ namespace Capture_the_Flag
                 m_Player.MoveLeft();
             }
         }
+
+        public void ResetState()
+        {
+            
+        }
     }
 }

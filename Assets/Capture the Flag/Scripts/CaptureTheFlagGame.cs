@@ -41,30 +41,33 @@ namespace Capture_the_Flag
             }
         }
 
+        
         private bool IsGameDone()
         {
             return m_Players.All(player => player.IsDone());
         }
-
-
-
-
-
+        
 
         public void Initialize(GeneticAlgorithmParameters parameters)
         {
             Application.targetFrameRate = parameters.framesPerSeconds;
             m_GaParameters = parameters;
             m_Players = new List<CaptureTheFlagPlayer>();
+            
+            for (var i = 0; i < parameters.populationCount; i++)
+            {
+                var startPosition = _start.position;
+                var player = Instantiate(_playerPrefab);
+                var input = CaptureTheFlagPlayerBotInput.New(player);
+                player.SetGame(this);
+                player.SetInput(input);
+                player.SetPosition(startPosition);
+                m_Players.Add(player);
+            }
         }
 
         public void ResetState()
         {
-            foreach (var player in m_Players)
-            {
-                Destroy(player.gameObject);
-            }
-            m_Players.Clear();
             m_IsStarted = false;
         }
 
@@ -73,41 +76,15 @@ namespace Capture_the_Flag
             return m_Players.Cast<IGeneticAlgorithmEntity>().ToArray();
         }
 
-        public void SetPopulation(IGeneticAlgorithmEntity[] population)
-        {
-            foreach (var entity in population)
-            {
-                m_Players.Add((CaptureTheFlagPlayer) entity);
-            }
-        }
-
         public IGeneticAlgorithmBrain CreateBrainWithSize(int brainSize)
         {
             return BasicGeneticAlgorithmBrain.New(brainSize, 4);
         }
         
-        /*public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
-        {
-            var startPosition = _start.position;
-            var player = Instantiate(_playerPrefab);
-            var input = CaptureTheFlagPlayerBotInput.New(player);
-            player.SetGame(this);
-            player.SetInput(input);
-            player.SetBrain(brain);
-            player.SetPosition(startPosition);
-            return player;
-        }*/
-        
         public void Simulate()
         {
             m_IsStarted = true;
         }
-        
-        
-        
-        
-        
-        
 
         public CaptureTheFlagGameState GetState()
         {

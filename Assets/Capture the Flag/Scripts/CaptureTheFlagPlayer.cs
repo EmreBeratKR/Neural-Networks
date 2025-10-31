@@ -60,6 +60,8 @@ namespace Capture_the_Flag
 
         private bool CanPlay()
         {
+            if (m_Brain is null) return false;
+            
             if (m_IsCapturedFlag) return false;
 
             if (m_IsStopped) return false;
@@ -97,15 +99,19 @@ namespace Capture_the_Flag
         {
             return m_Brain;
         }
-
-        public void ResetState()
-        {
-            
-        }
-
+        
         public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;
+        }
+
+        public void ResetState()
+        {
+            m_IsCapturedFlag = false;
+            m_IsStopped = false;
+            m_IsDead = false;
+            m_Input.ResetState();
+            SetPosition(m_Game.GetState().startPosition);
         }
 
         public void MoveUp()

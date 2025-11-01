@@ -83,7 +83,7 @@ namespace GeneticAlgorithm
         {
             for (var i = 0; i < m_Parameters.populationCount; i++)
             {
-                var brain = m_Environment.CreateBrainWithSize(m_Parameters.brainBatchSize);
+                var brain = m_Environment.CreateBrainWithSize(m_Parameters.brainSize);
                 m_Population[i].SetBrain(brain);
             }
         }
@@ -121,6 +121,16 @@ namespace GeneticAlgorithm
             }
         }
 
+
+        private IGeneticAlgorithmEntity SelectParent()
+        {
+            if (m_Parameters.parentSelectionOperator is ParentSelectionOperatorType.RouletteWheel)
+            {
+                return RouletteWheelSelection();
+            }
+
+            return RouletteWheelSelection();
+        }
         
         private IGeneticAlgorithmEntity RouletteWheelSelection()
         {
@@ -141,11 +151,38 @@ namespace GeneticAlgorithm
             return m_Population[^1];
         }
 
+        private IGeneticAlgorithmBrain Crossover(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
+        {
+            if (m_Parameters.crossoverOperator is CrossoverOperatorType.SinglePoint)
+            {
+                return SinglePointCrossover(a, b);
+            }
+
+            return SinglePointCrossover(a, b);
+        }
+        
+        private IGeneticAlgorithmBrain SinglePointCrossover(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
+        {
+            var brain = a.Copy();
+            var brainSize = brain.GetSize();
+            var crossoverPoint = Random.Range(0, brainSize);
+            
+            for (var i = 0; i < brainSize; i++)
+            {
+                if (i < crossoverPoint)
+                {
+                    brain.SetAction(b.GetAction(i), i);
+                }
+            }
+
+            return brain;
+        }
+
         private IGeneticAlgorithmBrain ReproduceNewBrainFromPopulation(IGeneticAlgorithmEntity[] population, GeneticAlgorithmParameters parameters)
         {
             IGeneticAlgorithmBrain newBrain;
-            var a = RouletteWheelSelection().GetBrain();
-            var b = RouletteWheelSelection().GetBrain();
+            var a = SelectParent().GetBrain();
+            var b = SelectParent().GetBrain();
 
             if (Random.Range(0f, 1f) <= parameters.crossoverRate)
             {
@@ -162,23 +199,6 @@ namespace GeneticAlgorithm
             }
 
             return newBrain;
-        }
-
-        private IGeneticAlgorithmBrain SinglePointCrossover(IGeneticAlgorithmBrain a, IGeneticAlgorithmBrain b)
-        {
-            var brain = a.Copy();
-            var brainSize = brain.GetSize();
-            var crossoverPoint = Random.Range(0, brainSize);
-            
-            for (var i = 0; i < brainSize; i++)
-            {
-                if (i < crossoverPoint)
-                {
-                    brain.SetAction(b.GetAction(i), i);
-                }
-            }
-
-            return brain;
         }
     }
 }

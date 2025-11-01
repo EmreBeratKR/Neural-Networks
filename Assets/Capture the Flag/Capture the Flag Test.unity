@@ -603,14 +603,18 @@ MonoBehaviour:
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 477925278}
   _parameters:
+    isFixedBrainSize: 0
+    genPerBrainSizeIncrease: 2
+    isFrameDependent: 0
     framesPerSeconds: 60
     populationCount: 1000
-    genPerBrainSizeIncrease: 2
-    brainBatchSize: 300
-    maxBrainSizeIncreaseCount: 50
+    brainSize: 300
+    parentSelectionOperator: 0
+    crossoverOperator: 1
+    mutationOperator: 1
     elitismRate: 0.01
-    mutationRate: 0.1
     crossoverRate: 0.5
+    mutationRate: 0.1
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01

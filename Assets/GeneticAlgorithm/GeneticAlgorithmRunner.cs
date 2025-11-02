@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEditor;
@@ -18,18 +20,31 @@ namespace GeneticAlgorithm
         [SerializeField] private Vector2 _fitnessGraphOffset;
         [SerializeField] private float _fitnessGraphDotRadius;
 
+        [Header("Saves")] 
+        [SerializeField] private string _savePath;
+        [SerializeField] private bool _save;
 
+
+        private string m_SaveFolderName;
         private GeneticAlgorithmModel m_Model;
         
         
         private void Start()
         {
             var environment = _environmentGameObject.GetComponent<IGeneticAlgorithmEnvironment>();
+
+            if (_save)
+            {
+                m_SaveFolderName = DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss");
+                Directory.CreateDirectory(Path.Join(_savePath, m_SaveFolderName));
+            }
+            
             m_Model = GeneticAlgorithmModel.New()
                 .SetEnvironment(environment)
                 .SetParameters(_parameters);
 
             m_Model.OnGenerationNumberChanged += OnModelGenerationNumberChanged;
+            m_Model.OnGenerationEvaluated += OnGenerationEvaluated;
             m_Model.OnBrainSizeChanged += OnModelBrainSizeChanged;
             m_Model.Run();
         }
@@ -37,6 +52,7 @@ namespace GeneticAlgorithm
         private void OnDestroy()
         {
             m_Model.OnGenerationNumberChanged -= OnModelGenerationNumberChanged;
+            m_Model.OnGenerationEvaluated -= OnGenerationEvaluated;
             m_Model.OnBrainSizeChanged -= OnModelBrainSizeChanged;
         }
 
@@ -68,6 +84,18 @@ namespace GeneticAlgorithm
         {
             UpdateGenerationNumberText(generationNumber);
             UpdateBestFitnessText();
+        }
+
+        private void OnGenerationEvaluated(int generationNumber)
+        {
+            if (_save)
+            {
+                var save = m_Model.GetCurrentPopulationSaveData();
+                var path = Path.Join(_savePath, m_SaveFolderName, $"gen_{generationNumber - 1}.json");
+                var json = JsonUtility.ToJson(save, true);
+            
+                File.WriteAllText(path, json);
+            }
         }
 
         private void OnModelBrainSizeChanged(int brainSize)

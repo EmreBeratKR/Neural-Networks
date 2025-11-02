@@ -623,6 +623,8 @@ MonoBehaviour:
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01
+  _savePath: Assets/Capture the Flag/Saves
+  _save: 1
 --- !u!4 &914861402
 Transform:
   m_ObjectHideFlags: 0

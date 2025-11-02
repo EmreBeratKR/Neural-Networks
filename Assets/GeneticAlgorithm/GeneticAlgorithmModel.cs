@@ -9,6 +9,7 @@ namespace GeneticAlgorithm
     public class GeneticAlgorithmModel
     {
         public event Action<int> OnGenerationNumberChanged;
+        public event Action<int> OnGenerationEvaluated; 
         public event Action<int> OnBrainSizeChanged;
 
 
@@ -19,7 +20,6 @@ namespace GeneticAlgorithm
         private int m_GenerationNumber;
         private float m_FitnessSum;
         private float[] m_FitnessValues;
-        private int m_BrainSizeIncreaseCount;
         private bool m_ManualTerminate;
         private bool m_IsTerminated;
         
@@ -51,7 +51,6 @@ namespace GeneticAlgorithm
             CreateInitialPopulation();
             m_AverageFitnessValues = new List<float>();
             SetGenerationNumber(1);
-            m_BrainSizeIncreaseCount = 0;
             OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
             
             m_Environment.Simulate();
@@ -67,13 +66,42 @@ namespace GeneticAlgorithm
         {
             return m_AverageFitnessValues;
         }
+        
+        public PopulationSaveData GetCurrentPopulationSaveData()
+        {
+            var entities = new EntitySaveData[m_Population.Length];
+
+            for (var i = 0; i < entities.Length; i++)
+            {
+                var brain = m_Population[i].GetBrain();
+                var brainSize = brain.GetSize();
+                var actions = new int[brainSize];
+
+                for (var j = 0; j < actions.Length; j++)
+                {
+                    actions[j] = brain.GetAction(j);
+                }
+                entities[i] = new EntitySaveData()
+                {
+                    fitness = m_FitnessValues[i],
+                    actions = actions
+                };
+            }
+
+            return new PopulationSaveData()
+            {
+                bestMeanFitness = m_AverageFitnessValues.Max(),
+                entities = entities
+            };
+        }
 
 
         private void OnSimulationDone()
         {
-            if (m_IsTerminated) return;
-            
             CacheValues();
+            OnGenerationEvaluated?.Invoke(m_GenerationNumber + 1);
+            
+            if (m_IsTerminated) return;
 
             if (ShouldTerminate())
             {

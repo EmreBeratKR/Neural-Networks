@@ -91,7 +91,7 @@ namespace GeneticAlgorithm
             var best = m_Model.GetFitnessValues()
                 .OrderByDescending(e => e)
                 .FirstOrDefault();
-            _bestFitnessText.text = $"Best Fitness: {best:F}";
+            _bestFitnessText.text = $"Best Fitness: {best:f3}";
         }
     }
 }

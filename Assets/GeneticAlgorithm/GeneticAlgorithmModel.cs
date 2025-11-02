@@ -20,6 +20,7 @@ namespace GeneticAlgorithm
         private float m_FitnessSum;
         private float[] m_FitnessValues;
         private int m_BrainSizeIncreaseCount;
+        private bool m_ManualTerminate;
         private bool m_IsTerminated;
         
         
@@ -54,6 +55,12 @@ namespace GeneticAlgorithm
             OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
             
             m_Environment.Simulate();
+        }
+
+        [ContextMenu("Terminate")]
+        public void ManualTerminate()
+        {
+            m_ManualTerminate = true;
         }
 
         public List<float> GetFitnessValues()
@@ -105,10 +112,10 @@ namespace GeneticAlgorithm
 
         private bool ShouldTerminate()
         {
+            if (TerminateIfManualTrigger()) return true;
+            
             switch (m_Parameters.terminationCondition)
             {
-                case TerminationConditionType.Manual:
-                    return TerminateIfManualTrigger();
                 case TerminationConditionType.LowFitnessValueVariance:
                     return TerminateIfLowFitnessValueVariance();
                 case TerminationConditionType.UntilGeneration:
@@ -122,7 +129,7 @@ namespace GeneticAlgorithm
 
         private bool TerminateIfManualTrigger()
         {
-            return false;
+            return m_ManualTerminate;
         }
         
         private bool TerminateIfLowFitnessValueVariance()
@@ -152,12 +159,12 @@ namespace GeneticAlgorithm
 
         private bool TerminateIfGenerationReached()
         {
-            return false;
+            return m_GenerationNumber >= m_Parameters.generationThreshold;
         }
 
         private bool TerminateIfFitnessValueReached()
         {
-            return false;
+            return m_AverageFitnessValues[^1] >= m_Parameters.fitnessValueThreshold;
         }
         
         private void CreateNextPopulation()

@@ -24,6 +24,10 @@ namespace GeneticAlgorithm
         public int lowVarianceSampleCount;
         [Min(0f)]
         public int lowVarianceThreshold;
+
+        [Min(1)]
+        public int generationThreshold;
+        public float fitnessValueThreshold; 
         
         [Range(0f, 1f)]
         public float elitismRate;

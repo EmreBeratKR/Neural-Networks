@@ -25,8 +25,11 @@ namespace GeneticAlgorithm
         
         private SerializedProperty m_TerminationConditionProp;
         
-        private SerializedProperty m_NotEnoughProgressionSampleCountProp;
-        private SerializedProperty m_NotEnoughProgressionThresholdProp;
+        private SerializedProperty m_LowVarianceSampleCountProp;
+        private SerializedProperty m_LowVarianceThresholdProp;
+        
+        private SerializedProperty m_GenerationThresholdProp;
+        private SerializedProperty m_FitnessValueThresholdProp;
         
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -52,8 +55,11 @@ namespace GeneticAlgorithm
             
             m_TerminationConditionProp = property.FindPropertyRelative("terminationCondition");
             
-            m_NotEnoughProgressionSampleCountProp = property.FindPropertyRelative("lowVarianceSampleCount");
-            m_NotEnoughProgressionThresholdProp = property.FindPropertyRelative("lowVarianceThreshold");
+            m_LowVarianceSampleCountProp = property.FindPropertyRelative("lowVarianceSampleCount");
+            m_LowVarianceThresholdProp = property.FindPropertyRelative("lowVarianceThreshold");
+            
+            m_GenerationThresholdProp = property.FindPropertyRelative("generationThreshold");
+            m_FitnessValueThresholdProp = property.FindPropertyRelative("fitnessValueThreshold");
 
             var boldStyle = new GUIStyle(EditorStyles.label)
             {
@@ -102,10 +108,22 @@ namespace GeneticAlgorithm
 
             if ((TerminationConditionType) m_TerminationConditionProp.intValue is TerminationConditionType.LowFitnessValueVariance)
             {
-                EditorGUI.PropertyField(rect, m_NotEnoughProgressionSampleCountProp);
+                EditorGUI.PropertyField(rect, m_LowVarianceSampleCountProp);
                 rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
                 
-                EditorGUI.PropertyField(rect, m_NotEnoughProgressionThresholdProp);
+                EditorGUI.PropertyField(rect, m_LowVarianceThresholdProp);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            }
+
+            if ((TerminationConditionType) m_TerminationConditionProp.intValue is TerminationConditionType.UntilGeneration)
+            {
+                EditorGUI.PropertyField(rect, m_GenerationThresholdProp);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            }
+            
+            if ((TerminationConditionType) m_TerminationConditionProp.intValue is TerminationConditionType.UntilFitnessValue)
+            {
+                EditorGUI.PropertyField(rect, m_FitnessValueThresholdProp);
                 rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
             }
         }

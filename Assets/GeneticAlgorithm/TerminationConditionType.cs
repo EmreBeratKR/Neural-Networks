@@ -2,9 +2,9 @@ namespace GeneticAlgorithm
 {
     public enum TerminationConditionType
     {
-        Manual,
+        None,
         LowFitnessValueVariance,
+        UntilFitnessValue,
         UntilGeneration,
-        UntilFitnessValue
     }
 }

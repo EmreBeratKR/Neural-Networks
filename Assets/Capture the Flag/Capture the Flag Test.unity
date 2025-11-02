@@ -608,13 +608,15 @@ MonoBehaviour:
     isFrameDependent: 0
     framesPerSeconds: 60
     populationCount: 1000
-    brainSize: 120
+    brainSize: 30
     parentSelectionOperator: 0
     crossoverOperator: 1
     mutationOperator: 1
-    terminationCondition: 1
+    terminationCondition: 3
     lowVarianceSampleCount: 30
     lowVarianceThreshold: 10
+    generationThreshold: 10
+    fitnessValueThreshold: 0.2
     elitismRate: 0.01
     crossoverRate: 0.5
     mutationRate: 0.1

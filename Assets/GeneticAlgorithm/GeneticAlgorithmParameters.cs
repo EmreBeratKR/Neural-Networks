@@ -18,6 +18,12 @@ namespace GeneticAlgorithm
         public ParentSelectionOperatorType parentSelectionOperator;
         public CrossoverOperatorType crossoverOperator;
         public MutationOperatorType mutationOperator;
+
+        public TerminationConditionType terminationCondition;
+        [Min(2)]
+        public int lowVarianceSampleCount;
+        [Min(0f)]
+        public int lowVarianceThreshold;
         
         [Range(0f, 1f)]
         public float elitismRate;

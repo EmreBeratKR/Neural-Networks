@@ -23,6 +23,11 @@ namespace GeneticAlgorithm
         private SerializedProperty m_CrossoverRateProp;
         private SerializedProperty m_MutationRateProp;
         
+        private SerializedProperty m_TerminationConditionProp;
+        
+        private SerializedProperty m_NotEnoughProgressionSampleCountProp;
+        private SerializedProperty m_NotEnoughProgressionThresholdProp;
+        
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -44,6 +49,11 @@ namespace GeneticAlgorithm
             m_ElitismRateProp = property.FindPropertyRelative("elitismRate");
             m_CrossoverRateProp = property.FindPropertyRelative("crossoverRate");
             m_MutationRateProp = property.FindPropertyRelative("mutationRate");
+            
+            m_TerminationConditionProp = property.FindPropertyRelative("terminationCondition");
+            
+            m_NotEnoughProgressionSampleCountProp = property.FindPropertyRelative("lowVarianceSampleCount");
+            m_NotEnoughProgressionThresholdProp = property.FindPropertyRelative("lowVarianceThreshold");
 
             var boldStyle = new GUIStyle(EditorStyles.label)
             {
@@ -84,6 +94,18 @@ namespace GeneticAlgorithm
             if ((MutationOperatorType) m_MutationOperationTypeProp.intValue is not MutationOperatorType.None)
             {
                 EditorGUI.PropertyField(rect, m_MutationRateProp);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            }
+            
+            EditorGUI.PropertyField(rect, m_TerminationConditionProp);
+            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+
+            if ((TerminationConditionType) m_TerminationConditionProp.intValue is TerminationConditionType.LowFitnessValueVariance)
+            {
+                EditorGUI.PropertyField(rect, m_NotEnoughProgressionSampleCountProp);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+                
+                EditorGUI.PropertyField(rect, m_NotEnoughProgressionThresholdProp);
                 rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
             }
         }

@@ -20,6 +20,7 @@ namespace GeneticAlgorithm
         private float m_FitnessSum;
         private float[] m_FitnessValues;
         private int m_BrainSizeIncreaseCount;
+        private bool m_IsTerminated;
         
         
         public static GeneticAlgorithmModel New()
@@ -63,7 +64,15 @@ namespace GeneticAlgorithm
 
         private void OnSimulationDone()
         {
+            if (m_IsTerminated) return;
+            
             CacheValues();
+
+            if (ShouldTerminate())
+            {
+                Terminate();
+                return;
+            }
             
             CreateNextPopulation();
             SetGenerationNumber(m_GenerationNumber + 1);
@@ -86,6 +95,69 @@ namespace GeneticAlgorithm
                 var brain = m_Environment.CreateBrainWithSize(m_Parameters.brainSize);
                 m_Population[i].SetBrain(brain);
             }
+        }
+
+        private void Terminate()
+        {
+            m_IsTerminated = true;
+            Debug.Log("terminated");
+        }
+
+        private bool ShouldTerminate()
+        {
+            switch (m_Parameters.terminationCondition)
+            {
+                case TerminationConditionType.Manual:
+                    return TerminateIfManualTrigger();
+                case TerminationConditionType.LowFitnessValueVariance:
+                    return TerminateIfLowFitnessValueVariance();
+                case TerminationConditionType.UntilGeneration:
+                    return TerminateIfGenerationReached();
+                case TerminationConditionType.UntilFitnessValue:
+                    return TerminateIfFitnessValueReached();
+                default:
+                    return TerminateIfManualTrigger();
+            }
+        }
+
+        private bool TerminateIfManualTrigger()
+        {
+            return false;
+        }
+        
+        private bool TerminateIfLowFitnessValueVariance()
+        {
+            var threshold = m_Parameters.lowVarianceThreshold;
+            var sampleCount = m_Parameters.lowVarianceSampleCount;
+
+            if (sampleCount >= m_AverageFitnessValues.Count) return false;
+            
+            var sampleMean = m_AverageFitnessValues
+                .TakeLast(sampleCount)
+                .Average();
+            var numerator = 0f;
+            for (var i = m_AverageFitnessValues.Count - sampleCount; i < m_AverageFitnessValues.Count; i++)
+            {
+                var dif = m_AverageFitnessValues[i] - sampleMean;
+                numerator += dif * dif;
+            }
+
+            var variance = numerator / (sampleCount - 1);
+            var scaledVariance = variance * 1000000;
+
+            Debug.Log(scaledVariance);
+            
+            return scaledVariance <= threshold;
+        }
+
+        private bool TerminateIfGenerationReached()
+        {
+            return false;
+        }
+
+        private bool TerminateIfFitnessValueReached()
+        {
+            return false;
         }
         
         private void CreateNextPopulation()
@@ -186,7 +258,7 @@ namespace GeneticAlgorithm
 
             if (Random.Range(0f, 1f) <= parameters.crossoverRate)
             {
-                newBrain = SinglePointCrossover(a, b);
+                newBrain = Crossover(a, b);
             }
             else
             {

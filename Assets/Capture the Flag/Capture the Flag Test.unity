@@ -602,7 +602,7 @@ MonoBehaviour:
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 477925278}
-  _mode: 1
+  _mode: 0
   _saveFile: {fileID: 4900000, guid: e8136375f91564a41a9ce689210d4eb4, type: 3}
   _parameters:
     isFrameDependent: 1

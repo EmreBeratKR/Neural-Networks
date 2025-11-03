@@ -308,15 +308,15 @@ namespace GeneticAlgorithm
 
         private void CacheValues()
         {
-            var averageFitness = m_Population.Average(e => e.GetFitness());
-            
-            m_AverageFitnessValues.Add(averageFitness);
-            m_FitnessSum = m_Population.Sum(e => e.GetFitness());
-
             for (var i = 0; i < m_Population.Length; i++)
             {
                 m_FitnessValues[i] = m_Population[i].GetFitness();
             }
+            
+            var averageFitness = m_FitnessValues.Average(e => e);
+            
+            m_AverageFitnessValues.Add(averageFitness);
+            m_FitnessSum = m_FitnessValues.Sum(e => e);
         }
 
 

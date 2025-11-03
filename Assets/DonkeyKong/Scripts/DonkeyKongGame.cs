@@ -47,8 +47,7 @@ namespace DonkeyKong
                 OnSimulationDone?.Invoke();
             }
         }
-        
-        
+
         private bool IsGameDone()
         {
             return m_Players.All(player => player.IsDone());
@@ -61,6 +60,19 @@ namespace DonkeyKong
             m_GaParameters = parameters;
             m_Random = new Random(config.seed);
             m_Players = new List<DonkeyKongPlayer>();
+            
+            for (var i = 0; i < parameters.populationCount; i++)
+            {
+                var startPosition = _startPoint.position;
+                var player = Instantiate(_playerPrefab);
+                var input = DonkeyKongPlayerBotInput.New(player);
+                //var input = new DonkeyKongPlayerHumanInput();
+                player.SetGame(this);
+                player.SetInput(input);
+                player.SetPosition(startPosition);
+                m_Players.Add(player);
+            }
+            
             m_Princess = GetComponentInChildren<DonkeyKongPrincess>(true);
             m_Monkey = GetComponentInChildren<DonkeyKongMonkey>(true);
             m_Grounds = GetComponentsInChildren<DonkeyKongGround>(true);
@@ -71,14 +83,6 @@ namespace DonkeyKong
         public void ResetState()
         {
             var config = GetConfig();
-
-            var oldPopulation = m_Players.Take(m_GaParameters.populationCount);
-            var newPopulation = m_Players.Skip(m_GaParameters.populationCount).ToList();
-            foreach (var player in oldPopulation)
-            {
-                Destroy(player.gameObject);
-            }
-            m_Players = newPopulation;
             
             m_IsStarted = false;
             m_Random = new Random(config.seed);
@@ -95,22 +99,19 @@ namespace DonkeyKong
             return BasicGeneticAlgorithmBrain.New(brainSize, 6);
         }
 
-        /*public IGeneticAlgorithmEntity CreateEntityWithBrain(IGeneticAlgorithmBrain brain)
-        {
-            var startPosition = _startPoint.position;
-            var player = Instantiate(_playerPrefab);
-            //var input = new DonkeyKongPlayerHumanInput();
-            var input = DonkeyKongPlayerBotInput.New(player);
-            player.SetGame(this);
-            player.SetInput(input);
-            player.SetBrain(brain);
-            player.SetPosition(startPosition);
-            return player;
-        }*/
-
         public void Simulate()
         {
             m_IsStarted = true;
+        }
+
+        public float GetDeltaTime()
+        {
+            return 1f / m_GaParameters.framesPerSeconds;
+        }
+
+        public Vector2 GetStartPosition()
+        {
+            return _startPoint.position;
         }
 
         public DonkeyKongPrincess GetPrincess()

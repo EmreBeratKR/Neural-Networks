@@ -10,6 +10,8 @@ namespace DonkeyKong
         [SerializeField] private Animator _animator;
         [SerializeField] private Vector2 _offset;
         [SerializeField] private float _radius;
+        [SerializeField] private Vector2 _escapeOffset;
+        [SerializeField] private float _escapeRadius;
         
         
         public static Action<DonkeyKongBarrel> OnAnyDestroyed;
@@ -35,6 +37,11 @@ namespace DonkeyKong
             var radius = GetRadius();
             Gizmos.color = Color.black;
             Gizmos.DrawWireSphere(center, radius);
+            
+            var escapeCenter = GetEscapeCenter();
+            var escapeRadius = GetEscapeRadius();
+            Gizmos.color = Color.gray;
+            Gizmos.DrawWireSphere(escapeCenter, escapeRadius);
         }
 
 
@@ -192,6 +199,16 @@ namespace DonkeyKong
         public float GetRadius()
         {
             return _radius;
+        }
+
+        public Vector2 GetEscapeCenter()
+        {
+            return (Vector2) transform.position + _escapeOffset;
+        }
+
+        public float GetEscapeRadius()
+        {
+            return _escapeRadius;
         }
     }
 }

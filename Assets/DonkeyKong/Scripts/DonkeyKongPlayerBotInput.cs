@@ -25,6 +25,8 @@ namespace DonkeyKong
                 m_Player.Stop();
                 return false;
             }
+
+            if (frameIndex < 0) return false;
             
             return brain.GetAction(frameIndex) == action;
         }

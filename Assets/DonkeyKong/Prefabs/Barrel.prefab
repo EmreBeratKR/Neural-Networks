@@ -190,3 +190,5 @@ MonoBehaviour:
   _animator: {fileID: 7083095880783867485}
   _offset: {x: 0, y: 0.2}
   _radius: 0.2
+  _escapeOffset: {x: 0, y: 0.55}
+  _escapeRadius: 0.1

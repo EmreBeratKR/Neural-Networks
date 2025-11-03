@@ -3090,19 +3090,33 @@ MonoBehaviour:
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 1990291129}
+  _mode: 0
+  _saveFile: {fileID: 0}
   _parameters:
+    isFrameDependent: 1
     framesPerSeconds: 60
-    populationCount: 1
-    bestPopulationCount: 1
-    genPerBrainSizeIncrease: 5
+    populationCount: 500
+    brainSize: 60
+    isFixedBrainSize: 0
     brainBatchSize: 60
-    maxBrainSizeIncreaseCount: 50
+    brainSizeIncreaseCondition: 0
+    generationPerBrainSizeIncrease: 5
+    parentSelectionOperator: 0
+    crossoverOperator: 1
+    mutationOperator: 1
+    terminationCondition: 3
+    lowVarianceSampleCount: 0
+    lowVarianceThreshold: 0
+    generationThreshold: 1000
+    fitnessValueThreshold: 0
     elitismRate: 0.01
+    crossoverRate: 0.5
     mutationRate: 0.05
-    crossoverRate: 0
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01
+  _savePath: 
+  _save: 0
 --- !u!4 &914861402
 Transform:
   m_ObjectHideFlags: 0

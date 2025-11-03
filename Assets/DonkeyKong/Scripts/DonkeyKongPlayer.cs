@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GeneticAlgorithm;
 using Physics;
 using UnityEngine;
@@ -30,11 +31,18 @@ namespace DonkeyKong
         private IGeneticAlgorithmBrain m_Brain;
         private DonkeyKongGame m_Game;
         private PlayerState m_State;
+        private float m_JumpStartPositionY;
         private float m_VerticalVelocity;
         private bool m_IsGrounded;
         private int m_FrameIndex = -1;
         private bool m_IsStop;
 
+        private float m_LadderUpDistance;
+        private float m_LadderDownDistance;
+        private float m_GoLeftDistance;
+        private float m_GoRightDistance;
+        private List<DonkeyKongBarrel> m_EscapedBarrels = new();
+        
 
         private void OnDrawGizmos()
         {
@@ -58,7 +66,7 @@ namespace DonkeyKong
             _animator.SetInteger("state", (int) m_State);
             
             if (!IsPlaying()) return;
-
+            
             if (m_State is PlayerState.Jump && m_IsGrounded && m_VerticalVelocity <= 0f)
             {
                 m_State = PlayerState.Idle;
@@ -70,6 +78,7 @@ namespace DonkeyKong
             
             if (!IsPlaying()) return;
             
+            CheckBarrelJumpEscape();
             UseLadder();
             
             if (m_State is PlayerState.ClimbLadder) return;
@@ -81,7 +90,7 @@ namespace DonkeyKong
             
             Jump();
             
-            transform.position += Vector3.up * (m_VerticalVelocity * Time.deltaTime);
+            transform.position += Vector3.up * (m_VerticalVelocity * m_Game.GetDeltaTime());
         }
 
 
@@ -102,6 +111,7 @@ namespace DonkeyKong
                 var jumpSpeed = Mathf.Sqrt(2 * maxHeight * gravity);
                 m_VerticalVelocity = jumpSpeed;
                 m_State = PlayerState.Jump;
+                m_JumpStartPositionY = transform.position.y;
             }
         }
         
@@ -117,8 +127,10 @@ namespace DonkeyKong
             if (m_Input.IsGoRight())
             {
                 var position = transform.position;
-                var x = position.x + Time.deltaTime * speed;
+                var x = position.x + m_Game.GetDeltaTime() * speed;
                 position.x = Mathf.Min(x, 4.14f);
+                var dist = Mathf.Abs(transform.position.x - position.x);
+                m_GoRightDistance += dist;
                 transform.position = position;
                 UpdateFacingDirection(true);
 
@@ -131,8 +143,10 @@ namespace DonkeyKong
             else if (m_Input.IsGoLeft())
             {
                 var position = transform.position;
-                var x = position.x - Time.deltaTime * speed;
+                var x = position.x - m_Game.GetDeltaTime() * speed;
                 position.x = Mathf.Max(x, -4.14f);
+                var dist = Mathf.Abs(transform.position.x - position.x);
+                m_GoLeftDistance += dist;
                 transform.position = position;
                 UpdateFacingDirection(false);
                 
@@ -151,7 +165,7 @@ namespace DonkeyKong
         private void ApplyGravity()
         {
             var gravity = GetGravity();
-            m_VerticalVelocity += gravity * Time.deltaTime;
+            m_VerticalVelocity += gravity * m_Game.GetDeltaTime();
         }
         
         private void DieIfCollidesWithBarrel()
@@ -169,7 +183,33 @@ namespace DonkeyKong
 
                     if (Collisions2D.CircleAndCircleIntersection(center, radius, barrelCenter, barrelRadius))
                     {
+                        m_EscapedBarrels.Remove(barrel);
+                        
                         Die();
+                    }
+                }
+            }
+            catch (Exception) { /* ignored */ }
+        }
+        
+        private void CheckBarrelJumpEscape()
+        {
+            var barrels = m_Game.GetMonkey().GetBarrels();
+
+            try
+            {
+                foreach (var barrel in barrels)
+                {
+                    if (m_EscapedBarrels.Contains(barrel)) continue;
+                    
+                    var center = GetCenter();
+                    var radius = GetRadius();
+                    var barrelCenter = barrel.GetEscapeCenter();
+                    var barrelRadius = barrel.GetEscapeRadius();
+
+                    if (Collisions2D.CircleAndCircleIntersection(center, radius, barrelCenter, barrelRadius))
+                    {
+                        m_EscapedBarrels.Add(barrel);
                     }
                 }
             }
@@ -299,7 +339,9 @@ namespace DonkeyKong
                 
                 if (climbUp)
                 {
-                    transform.position += Vector3.up * (Time.deltaTime * climbSpeed);
+                    var dist = m_Game.GetDeltaTime() * climbSpeed;
+                    transform.position += Vector3.up * dist;
+                    m_LadderUpDistance += dist;
                 } 
                 
                 else if (climbDown)
@@ -316,7 +358,9 @@ namespace DonkeyKong
 
                     if (m_State is PlayerState.ClimbLadder)
                     {
-                        transform.position += Vector3.down * (Time.deltaTime * climbSpeed);
+                        var dist = m_Game.GetDeltaTime() * climbSpeed;
+                        transform.position += Vector3.down * dist;
+                        m_LadderDownDistance += dist;
                     }
                     
                 }
@@ -348,17 +392,26 @@ namespace DonkeyKong
         {
             return _radius;
         }
-        
+
+        public void ResetState()
+        {
+            m_State = PlayerState.Idle;
+            m_VerticalVelocity = 0f;
+            m_IsGrounded = false;
+            m_FrameIndex = -1;
+            m_IsStop = false;
+            m_LadderUpDistance = 0f;
+            m_LadderDownDistance = 0f;
+            m_EscapedBarrels.Clear();
+            
+            SetPosition(m_Game.GetStartPosition());
+        }
+
         public IGeneticAlgorithmBrain GetBrain()
         {
             return m_Brain;
         }
-
-        public void ResetState()
-        {
-            
-        }
-
+        
         public void SetBrain(IGeneticAlgorithmBrain brain)
         {
             m_Brain = brain;
@@ -377,7 +430,7 @@ namespace DonkeyKong
 
         public int GetFrameIndex()
         {
-            return m_FrameIndex;
+            return Mathf.FloorToInt(m_FrameIndex / 10f);
         }
         
         public void Stop()
@@ -390,13 +443,33 @@ namespace DonkeyKong
         
         public float GetFitness()
         {
-            if (m_State is PlayerState.Win) return 1f;
-
             var position = (Vector2) transform.position;
             var targetPosition = m_Game.GetPrincess().GetCenter();
-            var distanceToFlag = Vector2.Distance(targetPosition, position);
 
-            return 1f / (1f + distanceToFlag);
+            if (m_State is PlayerState.Jump)
+            {
+                position.y = m_JumpStartPositionY;
+            }
+            
+            var sqrDistance = Vector2.SqrMagnitude(targetPosition - position);
+            var distanceFitness = 1f / (1f + sqrDistance);
+            var barrelEscapeFitness = m_EscapedBarrels.Count;
+            var ladderClimbFitness = m_LadderUpDistance - m_LadderDownDistance;
+            var horizontalMoveFitness = Mathf.Abs(m_GoRightDistance - m_GoLeftDistance);
+            var winFitness = m_State is PlayerState.Win
+                ? 1f / (1f + m_FrameIndex)
+                : 0f;
+            var dieFitness = m_State is PlayerState.Dead ? -1f : 0f;
+            var heightFitness = position.y;
+
+            return distanceFitness * 1f +
+                   barrelEscapeFitness * 0.1f +
+                   ladderClimbFitness * 0.05f +
+                   horizontalMoveFitness * 0.1f +
+                   winFitness * 5f +
+                   dieFitness * 1f +
+                   heightFitness * 2f +
+                   10f;
         }
     }
 }

@@ -85,6 +85,11 @@ namespace Capture_the_Flag
             m_IsStarted = true;
         }
 
+        public float GetDeltaTime()
+        {
+            return 1f / m_GaParameters.framesPerSeconds;
+        }
+
         public CaptureTheFlagGameState GetState()
         {
             return new CaptureTheFlagGameState

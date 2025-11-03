@@ -37,7 +37,8 @@ namespace Capture_the_Flag
         private void Move(Vector3 direction)
         {
             const float speed = 3f;
-            transform.position += direction * (Time.deltaTime * speed);
+            var deltaTime = m_Game.GetDeltaTime();
+            transform.position += direction * (deltaTime * speed);
         }
 
         private bool CanCaptureFlag()

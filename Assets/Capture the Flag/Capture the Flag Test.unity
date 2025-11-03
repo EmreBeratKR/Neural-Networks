@@ -608,11 +608,11 @@ MonoBehaviour:
     isFrameDependent: 1
     framesPerSeconds: 60
     populationCount: 1000
-    brainSize: 120
+    brainSize: 300
     isFixedBrainSize: 0
-    brainBatchSize: 30
+    brainBatchSize: 300
     brainSizeIncreaseCondition: 0
-    generationPerBrainSizeIncrease: 20
+    generationPerBrainSizeIncrease: 30
     parentSelectionOperator: 0
     crossoverOperator: 1
     mutationOperator: 1
@@ -623,7 +623,7 @@ MonoBehaviour:
     fitnessValueThreshold: 0.2
     elitismRate: 0.01
     crossoverRate: 0.5
-    mutationRate: 0.05
+    mutationRate: 0.004
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01

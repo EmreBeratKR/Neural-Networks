@@ -602,22 +602,24 @@ MonoBehaviour:
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 477925278}
+  _mode: 1
+  _saveFile: {fileID: 4900000, guid: e8136375f91564a41a9ce689210d4eb4, type: 3}
   _parameters:
     isFrameDependent: 1
     framesPerSeconds: 60
     populationCount: 1000
-    brainSize: 60
+    brainSize: 120
     isFixedBrainSize: 0
-    brainBatchSize: 5
+    brainBatchSize: 30
     brainSizeIncreaseCondition: 0
-    generationPerBrainSizeIncrease: 3
+    generationPerBrainSizeIncrease: 20
     parentSelectionOperator: 0
     crossoverOperator: 1
     mutationOperator: 1
-    terminationCondition: 1
+    terminationCondition: 3
     lowVarianceSampleCount: 30
     lowVarianceThreshold: 10
-    generationThreshold: 10
+    generationThreshold: 301
     fitnessValueThreshold: 0.2
     elitismRate: 0.01
     crossoverRate: 0.5
@@ -626,7 +628,7 @@ MonoBehaviour:
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01
   _savePath: Assets/Capture the Flag/Saves
-  _save: 0
+  _save: 1
 --- !u!4 &914861402
 Transform:
   m_ObjectHideFlags: 0

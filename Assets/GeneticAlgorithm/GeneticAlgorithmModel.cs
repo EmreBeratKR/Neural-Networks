@@ -41,7 +41,7 @@ namespace GeneticAlgorithm
             return this;
         }
         
-        public void Run()
+        public void Train()
         {
             if (m_Parameters.isFrameDependent)
             {
@@ -56,6 +56,71 @@ namespace GeneticAlgorithm
             CreateInitialPopulation();
             m_AverageFitnessValues = new List<float>();
             SetGenerationNumber(1);
+            OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
+            
+            m_Environment.Simulate();
+        }
+
+        public void LoadFromJson(string json)
+        {
+            if (m_Parameters.isFrameDependent)
+            {
+                Application.targetFrameRate = m_Parameters.framesPerSeconds;
+            }
+            
+            var data = JsonUtility.FromJson<PopulationSaveData>(json);
+
+            m_Parameters.populationCount = data.entities.Length;
+            m_Environment.Initialize(m_Parameters);
+            m_Population = m_Environment.GetPopulationPool();
+            m_FitnessValues = new float[data.entities.Length];
+            
+            for (var i = 0; i < data.entities.Length; i++)
+            {
+                var entity = data.entities[i];
+                var brain = m_Environment.CreateBrainWithSize(entity.actions.Length);
+
+                for (var j = 0; j < entity.actions.Length; j++)
+                {
+                    brain.SetAction(entity.actions[j], j);
+                }
+                
+                m_Population[i].SetBrain(brain);
+            }
+            
+            m_AverageFitnessValues = data.averageFitnessValues.Take(data.generationNumber).ToList();
+            SetGenerationNumber(data.generationNumber);
+            OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
+            
+            m_Environment.Simulate();
+        }
+        
+        public void LoadFromJsonBestEntity(string json)
+        {
+            if (m_Parameters.isFrameDependent)
+            {
+                Application.targetFrameRate = m_Parameters.framesPerSeconds;
+            }
+            
+            var data = JsonUtility.FromJson<PopulationSaveData>(json);
+
+            m_Parameters.populationCount = 1;
+            m_Environment.Initialize(m_Parameters);
+            m_Population = m_Environment.GetPopulationPool();
+            m_FitnessValues = new float[1];
+            
+            var entity = data.entities[0];
+            var brain = m_Environment.CreateBrainWithSize(entity.actions.Length);
+
+            for (var j = 0; j < entity.actions.Length; j++)
+            {
+                brain.SetAction(entity.actions[j], j);
+            }
+                
+            m_Population[0].SetBrain(brain);
+            
+            m_AverageFitnessValues = data.averageFitnessValues.Take(1).ToList();
+            SetGenerationNumber(data.generationNumber);
             OnBrainSizeChanged?.Invoke(m_Population[0].GetBrain().GetSize());
             
             m_Environment.Simulate();
@@ -95,7 +160,8 @@ namespace GeneticAlgorithm
 
             return new PopulationSaveData()
             {
-                bestMeanFitness = m_AverageFitnessValues.Max(),
+                generationNumber = m_GenerationNumber,
+                averageFitnessValues = m_AverageFitnessValues,
                 entities = entities
             };
         }

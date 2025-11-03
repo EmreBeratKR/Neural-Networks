@@ -9,10 +9,15 @@ namespace GeneticAlgorithm
 {
     public class GeneticAlgorithmRunner : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private GameObject _environmentGameObject;
         [SerializeField] private TMP_Text _generationNumberText;
         [SerializeField] private TMP_Text _brainSizeText;
         [SerializeField] private TMP_Text _bestFitnessText;
+
+        [Header("Settings")] 
+        [SerializeField] private GeneticAlgorithmRunnerMode _mode;
+        [SerializeField] private TextAsset _saveFile;
         [SerializeField] private GeneticAlgorithmParameters _parameters;
         
         [Header("Fitness Graph")]
@@ -31,22 +36,49 @@ namespace GeneticAlgorithm
         
         private void Start()
         {
-            var environment = _environmentGameObject.GetComponent<IGeneticAlgorithmEnvironment>();
-
-            if (_save)
+            if (_mode is GeneticAlgorithmRunnerMode.Train)
             {
-                m_SaveFolderName = DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss");
-                Directory.CreateDirectory(Path.Join(_savePath, m_SaveFolderName));
-            }
-            
-            m_Model = GeneticAlgorithmModel.New()
-                .SetEnvironment(environment)
-                .SetParameters(_parameters);
+                var environment = _environmentGameObject.GetComponent<IGeneticAlgorithmEnvironment>();
 
-            m_Model.OnGenerationNumberChanged += OnModelGenerationNumberChanged;
-            m_Model.OnGenerationEvaluated += OnGenerationEvaluated;
-            m_Model.OnBrainSizeChanged += OnModelBrainSizeChanged;
-            m_Model.Run();
+                if (_save)
+                {
+                    m_SaveFolderName = DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss");
+                    Directory.CreateDirectory(Path.Join(_savePath, m_SaveFolderName));
+                }
+            
+                m_Model = GeneticAlgorithmModel.New()
+                    .SetEnvironment(environment)
+                    .SetParameters(_parameters);
+
+                m_Model.OnGenerationNumberChanged += OnModelGenerationNumberChanged;
+                m_Model.OnGenerationEvaluated += OnGenerationEvaluated;
+                m_Model.OnBrainSizeChanged += OnModelBrainSizeChanged;
+                m_Model.Train();
+            }
+            else if (_mode is GeneticAlgorithmRunnerMode.PlayPopulation)
+            {
+                var environment = _environmentGameObject.GetComponent<IGeneticAlgorithmEnvironment>();
+                
+                m_Model = GeneticAlgorithmModel.New()
+                    .SetEnvironment(environment)
+                    .SetParameters(_parameters);
+                m_Model.OnGenerationNumberChanged += OnModelGenerationNumberChanged;
+                m_Model.OnGenerationEvaluated += OnGenerationEvaluated;
+                m_Model.OnBrainSizeChanged += OnModelBrainSizeChanged;
+                m_Model.LoadFromJson(_saveFile.text);
+            }
+            else if (_mode is GeneticAlgorithmRunnerMode.PlayPopulationBestPlayerOnly)
+            {
+                var environment = _environmentGameObject.GetComponent<IGeneticAlgorithmEnvironment>();
+                
+                m_Model = GeneticAlgorithmModel.New()
+                    .SetEnvironment(environment)
+                    .SetParameters(_parameters);
+                m_Model.OnGenerationNumberChanged += OnModelGenerationNumberChanged;
+                m_Model.OnGenerationEvaluated += OnGenerationEvaluated;
+                m_Model.OnBrainSizeChanged += OnModelBrainSizeChanged;
+                m_Model.LoadFromJsonBestEntity(_saveFile.text);
+            }
         }
 
         private void OnDestroy()

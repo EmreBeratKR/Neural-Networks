@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 namespace GeneticAlgorithm
 {
     [Serializable]
     public struct PopulationSaveData
     {
-        public float bestMeanFitness;
+        public int generationNumber;
+        public List<float> averageFitnessValues;
         public EntitySaveData[] entities;
     }
 

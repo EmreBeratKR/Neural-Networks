@@ -327,10 +327,7 @@ namespace GeneticAlgorithm
 
             if (m_Parameters.mutationOperator is MutationOperatorType.Random)
             {
-                if (Random.Range(0f, 1f) <= parameters.mutationRate)
-                { 
-                    newBrain.Mutate();
-                }
+                newBrain.Mutate(m_Parameters.mutationRate);
             }
 
             return newBrain;

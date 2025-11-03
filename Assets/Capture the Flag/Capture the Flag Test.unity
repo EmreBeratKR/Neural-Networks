@@ -621,7 +621,7 @@ MonoBehaviour:
     fitnessValueThreshold: 0.2
     elitismRate: 0.01
     crossoverRate: 0.5
-    mutationRate: 0.1
+    mutationRate: 0.05
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01

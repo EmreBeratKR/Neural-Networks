@@ -7,6 +7,6 @@ namespace GeneticAlgorithm
         void IncreaseSize(int value);
         int GetAction(int index);
         void SetAction(int action, int index);
-        void Mutate();
+        void Mutate(float rate);
     }
 }

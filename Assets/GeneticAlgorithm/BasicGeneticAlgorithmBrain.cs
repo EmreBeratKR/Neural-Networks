@@ -79,10 +79,15 @@ namespace GeneticAlgorithm
             m_Actions[index] = action;
         }
         
-        public void Mutate()
+        public void Mutate(float rate)
         {
-            var index = Random.Range(0, GetSize());
-            m_Actions[index] = GetRandomAction();
+            var size = GetSize();
+            for (var i = 0; i < size; i++)
+            {
+                if (Random.Range(0f, 1f) > rate) continue;
+                
+                m_Actions[i] = GetRandomAction();
+            }
         }
     }
 }

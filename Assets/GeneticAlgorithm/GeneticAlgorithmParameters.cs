@@ -6,14 +6,17 @@ namespace GeneticAlgorithm
     [Serializable]
     public struct GeneticAlgorithmParameters
     {
-        public bool isFixedBrainSize;
-        public int genPerBrainSizeIncrease;
-        
         public bool isFrameDependent;
         public int framesPerSeconds;
         
         public int populationCount;
         public int brainSize;
+        
+        public bool isFixedBrainSize;
+        public int brainBatchSize;
+        public BrainSizeIncreaseConditionType brainSizeIncreaseCondition;
+        [Min(1)]
+        public int generationPerBrainSizeIncrease;
 
         public ParentSelectionOperatorType parentSelectionOperator;
         public CrossoverOperatorType crossoverOperator;

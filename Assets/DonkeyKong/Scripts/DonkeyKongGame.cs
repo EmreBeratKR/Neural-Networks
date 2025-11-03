@@ -57,7 +57,6 @@ namespace DonkeyKong
         public void Initialize(GeneticAlgorithmParameters parameters)
         {
             var config = GetConfig();
-            Application.targetFrameRate = parameters.framesPerSeconds;
 
             m_GaParameters = parameters;
             m_Random = new Random(config.seed);

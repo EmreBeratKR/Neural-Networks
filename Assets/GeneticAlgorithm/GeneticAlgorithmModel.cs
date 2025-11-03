@@ -43,6 +43,11 @@ namespace GeneticAlgorithm
         
         public void Run()
         {
+            if (m_Parameters.isFrameDependent)
+            {
+                Application.targetFrameRate = m_Parameters.framesPerSeconds;
+            }
+            
             m_Environment.OnSimulationDone += OnSimulationDone;
             m_Environment.Initialize(m_Parameters);
 
@@ -194,6 +199,18 @@ namespace GeneticAlgorithm
         {
             return m_AverageFitnessValues[^1] >= m_Parameters.fitnessValueThreshold;
         }
+
+        private bool ShouldIncreaseBrainSize()
+        {
+            if (m_Parameters.isFixedBrainSize) return false;
+
+            if (m_Parameters.brainSizeIncreaseCondition is BrainSizeIncreaseConditionType.PerXGeneration)
+            {
+                return m_GenerationNumber % m_Parameters.generationPerBrainSizeIncrease == 0;
+            }
+
+            return false;
+        }
         
         private void CreateNextPopulation()
         {
@@ -212,6 +229,14 @@ namespace GeneticAlgorithm
                 var brain = ReproduceNewBrainFromPopulation(m_Population, m_Parameters);
                 m_Population[i].SetBrain(brain);
                 m_Population[i].ResetState();
+            }
+
+            if (ShouldIncreaseBrainSize())
+            {
+                foreach (var entity in m_Population)
+                {
+                    entity.GetBrain().IncreaseSize(m_Parameters.brainBatchSize);
+                }
             }
         }
 
@@ -300,9 +325,12 @@ namespace GeneticAlgorithm
                 newBrain = Random.Range(0f, 1f) <= 0.5f ? a.Copy() : b.Copy();
             }
 
-            if (Random.Range(0f, 1f) <= parameters.mutationRate)
+            if (m_Parameters.mutationOperator is MutationOperatorType.Random)
             {
-                newBrain.Mutate();
+                if (Random.Range(0f, 1f) <= parameters.mutationRate)
+                { 
+                    newBrain.Mutate();
+                }
             }
 
             return newBrain;

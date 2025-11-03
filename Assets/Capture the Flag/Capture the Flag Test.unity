@@ -603,16 +603,18 @@ MonoBehaviour:
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 477925278}
   _parameters:
-    isFixedBrainSize: 0
-    genPerBrainSizeIncrease: 2
-    isFrameDependent: 0
+    isFrameDependent: 1
     framesPerSeconds: 60
     populationCount: 1000
-    brainSize: 30
+    brainSize: 60
+    isFixedBrainSize: 0
+    brainBatchSize: 5
+    brainSizeIncreaseCondition: 0
+    generationPerBrainSizeIncrease: 3
     parentSelectionOperator: 0
     crossoverOperator: 1
     mutationOperator: 1
-    terminationCondition: 3
+    terminationCondition: 1
     lowVarianceSampleCount: 30
     lowVarianceThreshold: 10
     generationThreshold: 10
@@ -624,7 +626,7 @@ MonoBehaviour:
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01
   _savePath: Assets/Capture the Flag/Saves
-  _save: 1
+  _save: 0
 --- !u!4 &914861402
 Transform:
   m_ObjectHideFlags: 0

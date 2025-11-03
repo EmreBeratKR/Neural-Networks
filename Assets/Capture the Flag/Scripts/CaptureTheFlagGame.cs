@@ -50,7 +50,6 @@ namespace Capture_the_Flag
 
         public void Initialize(GeneticAlgorithmParameters parameters)
         {
-            Application.targetFrameRate = parameters.framesPerSeconds;
             m_GaParameters = parameters;
             m_Players = new List<CaptureTheFlagPlayer>();
             

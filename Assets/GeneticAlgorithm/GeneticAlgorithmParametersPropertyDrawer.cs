@@ -10,6 +10,8 @@ namespace GeneticAlgorithm
         private SerializedProperty m_BrainSizeProp;
         
         private SerializedProperty m_IsFixedBrainSizeProp;
+        private SerializedProperty m_BrainBatchSize;
+        private SerializedProperty m_BrainSizeIncreaseConditionProp;
         private SerializedProperty m_GenPerBrainSizeIncreaseProp;
         
         private SerializedProperty m_IsFrameDependentProp;
@@ -40,7 +42,9 @@ namespace GeneticAlgorithm
             m_BrainSizeProp = property.FindPropertyRelative("brainSize");
             
             m_IsFixedBrainSizeProp = property.FindPropertyRelative("isFixedBrainSize");
-            m_GenPerBrainSizeIncreaseProp = property.FindPropertyRelative("genPerBrainSizeIncrease");
+            m_BrainBatchSize = property.FindPropertyRelative("brainBatchSize");
+            m_BrainSizeIncreaseConditionProp = property.FindPropertyRelative("brainSizeIncreaseCondition");
+            m_GenPerBrainSizeIncreaseProp = property.FindPropertyRelative("generationPerBrainSizeIncrease");
             
             m_IsFrameDependentProp = property.FindPropertyRelative("isFrameDependent");
             m_FramesPerSecondProp = property.FindPropertyRelative("framesPerSeconds");
@@ -61,22 +65,9 @@ namespace GeneticAlgorithm
             m_GenerationThresholdProp = property.FindPropertyRelative("generationThreshold");
             m_FitnessValueThresholdProp = property.FindPropertyRelative("fitnessValueThreshold");
 
-            var boldStyle = new GUIStyle(EditorStyles.label)
-            {
-                fontStyle = FontStyle.Bold,
-                fontSize = 20
-            };
-            EditorGUI.LabelField(rect, "Hyper Parameters", boldStyle);
-            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
-            
-            EditorGUI.PropertyField(rect, m_PopulationCountProp);
-            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
-            
-            EditorGUI.PropertyField(rect, m_BrainSizeProp);
-            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
-            
-            rect = BrainSizeIncreaseGUI(rect, property, label);
+            rect = TitleGUI(rect, property, label);
             rect = FrameRateGUI(rect, property, label);
+            rect = PopulationSettingsGUI(rect, property, label);
             
             EditorGUI.PropertyField(rect, m_ParentSelectionOperationTypeProp);
             rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
@@ -128,20 +119,20 @@ namespace GeneticAlgorithm
             }
         }
 
-        private Rect BrainSizeIncreaseGUI(Rect rect, SerializedProperty property, GUIContent label)
+        private Rect TitleGUI(Rect rect, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.PropertyField(rect, m_IsFixedBrainSizeProp);
-            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
-
-            if (!m_IsFixedBrainSizeProp.boolValue)
+            var boldStyle = new GUIStyle(EditorStyles.label)
             {
-                EditorGUI.PropertyField(rect, m_GenPerBrainSizeIncreaseProp);
-                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
-            }
-
+                fontStyle = FontStyle.Bold,
+                fontSize = 20
+            };
+            
+            EditorGUI.LabelField(rect, "Hyper Parameters", boldStyle);
+            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            
             return rect;
         }
-
+        
         private Rect FrameRateGUI(Rect rect, SerializedProperty property, GUIContent label)
         {
             EditorGUI.PropertyField(rect, m_IsFrameDependentProp);
@@ -155,10 +146,39 @@ namespace GeneticAlgorithm
             
             return rect;
         }
+        
+        private Rect PopulationSettingsGUI(Rect rect, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.PropertyField(rect, m_PopulationCountProp);
+            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            
+            EditorGUI.PropertyField(rect, m_BrainSizeProp);
+            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+            
+            EditorGUI.PropertyField(rect, m_IsFixedBrainSizeProp);
+            rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+
+            if (!m_IsFixedBrainSizeProp.boolValue)
+            {
+                EditorGUI.PropertyField(rect, m_BrainBatchSize);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+                
+                EditorGUI.PropertyField(rect, m_BrainSizeIncreaseConditionProp);
+                rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+
+                if ((BrainSizeIncreaseConditionType) m_BrainSizeIncreaseConditionProp.intValue is BrainSizeIncreaseConditionType.PerXGeneration)
+                {
+                    EditorGUI.PropertyField(rect, m_GenPerBrainSizeIncreaseProp);
+                    rect.y += rect.height + EditorGUIUtility.standardVerticalSpacing;
+                }
+            }
+
+            return rect;
+        }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return 300f;
+            return 500f;
         }
     }
 }

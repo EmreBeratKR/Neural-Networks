@@ -63,7 +63,12 @@ namespace GeneticAlgorithm
         {
             return m_Actions.Count;
         }
-        
+
+        public void IncreaseSize(int value)
+        {
+            AddRandomActions(value);
+        }
+
         public int GetAction(int index)
         {
             return m_Actions[index];

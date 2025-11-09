@@ -444,7 +444,7 @@ namespace DonkeyKong
 
         public int GetFrameIndex()
         {
-            return m_FrameIndex;
+            return Mathf.FloorToInt(m_FrameIndex / 5f);
         }
         
         public void Stop()
@@ -476,8 +476,8 @@ namespace DonkeyKong
 
             return distanceFitness * 0f +
                    barrelEscapeFitness * 0f +
-                   m_LadderUpDistance * 0f +
-                   m_LadderDownDistance * 0f +
+                   m_LadderUpDistance * 0.1f +
+                   m_LadderDownDistance * -0.11f +
                    m_GoRightDistance * 0.1f +
                    m_GoLeftDistance * 0f +
                    winFitness * 0f +

@@ -126,7 +126,7 @@ namespace DonkeyKong
                 {
                     if (ground.IsPartOfLadder()) continue;
                     
-                    const float rayDistance = 0.06f;
+                    const float rayDistance = 0.12f;
                     var rayStart = (Vector2) transform.position + Vector2.up * 0.01f;
                     var rayEnd = rayStart + Vector2.down * rayDistance;
                     var groundCenter = ground.GetCenter();

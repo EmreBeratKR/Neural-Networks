@@ -3054,6 +3054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPoint: {fileID: 212778752}
   _playerPrefab: {fileID: 3080181331877092157, guid: 043c9fd16b6ceb94088d1bcfd739439b, type: 3}
+  _useHumanControls: 0
   _config:
     seed: 256
     playerHorizontalSpeed: 1.6
@@ -3106,9 +3107,9 @@ MonoBehaviour:
     populationCount: 256
     brainSize: 60
     isFixedBrainSize: 0
-    brainBatchSize: 2
+    brainBatchSize: 60
     brainSizeIncreaseCondition: 0
-    generationPerBrainSizeIncrease: 1
+    generationPerBrainSizeIncrease: 25
     parentSelectionOperator: 0
     crossoverOperator: 0
     mutationOperator: 1
@@ -3117,9 +3118,9 @@ MonoBehaviour:
     lowVarianceThreshold: 0
     generationThreshold: 1000
     fitnessValueThreshold: 0
-    elitismRate: 0.005
+    elitismRate: 0.01
     crossoverRate: 0.05
-    mutationRate: 0.01
+    mutationRate: 0.05
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01

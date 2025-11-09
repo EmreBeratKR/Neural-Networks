@@ -12,6 +12,7 @@ namespace DonkeyKong
     {
         [SerializeField] private Transform _startPoint;
         [SerializeField] private DonkeyKongPlayer _playerPrefab;
+        [SerializeField] private bool _useHumanControls;
         [SerializeField] private DonkeyKongConfig _config = DonkeyKongConfig.Default;
 
         
@@ -65,8 +66,9 @@ namespace DonkeyKong
             {
                 var startPosition = _startPoint.position;
                 var player = Instantiate(_playerPrefab);
-                var input = DonkeyKongPlayerBotInput.New(player);
-                //var input = new DonkeyKongPlayerHumanInput();
+                var input = _useHumanControls 
+                    ? (IDonkeyKongPlayerInput) new DonkeyKongPlayerHumanInput()
+                    : DonkeyKongPlayerBotInput.New(player);
                 player.SetGame(this);
                 player.SetInput(input);
                 player.SetPosition(startPosition);

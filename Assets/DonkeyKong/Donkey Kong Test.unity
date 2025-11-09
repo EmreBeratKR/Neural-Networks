@@ -460,6 +460,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ladder (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4453597305262361468, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
+      propertyPath: _isBroken
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5574057412415803459, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.281
@@ -826,6 +830,10 @@ PrefabInstance:
     - target: {fileID: 3340885626077876322, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_Name
       value: Ladder (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453597305262361468, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
+      propertyPath: _isBroken
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3094,24 +3102,24 @@ MonoBehaviour:
   _saveFile: {fileID: 0}
   _parameters:
     isFrameDependent: 1
-    framesPerSeconds: 60
-    populationCount: 500
+    framesPerSeconds: 30
+    populationCount: 256
     brainSize: 60
     isFixedBrainSize: 0
-    brainBatchSize: 60
+    brainBatchSize: 2
     brainSizeIncreaseCondition: 0
-    generationPerBrainSizeIncrease: 5
+    generationPerBrainSizeIncrease: 1
     parentSelectionOperator: 0
-    crossoverOperator: 1
+    crossoverOperator: 0
     mutationOperator: 1
-    terminationCondition: 3
+    terminationCondition: 0
     lowVarianceSampleCount: 0
     lowVarianceThreshold: 0
     generationThreshold: 1000
     fitnessValueThreshold: 0
-    elitismRate: 0.01
-    crossoverRate: 0.5
-    mutationRate: 0.05
+    elitismRate: 0.005
+    crossoverRate: 0.05
+    mutationRate: 0.01
   _fitnessGraphScale: {x: 2, y: 2}
   _fitnessGraphOffset: {x: -8.51, y: 1.13}
   _fitnessGraphDotRadius: 0.01
@@ -3488,6 +3496,10 @@ PrefabInstance:
     - target: {fileID: 3340885626077876322, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_Name
       value: Ladder (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453597305262361468, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
+      propertyPath: _isBroken
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5574057412415803459, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5588,6 +5600,10 @@ PrefabInstance:
     - target: {fileID: 3340885626077876322, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_Name
       value: Ladder (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453597305262361468, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
+      propertyPath: _isBroken
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5574057412415803459, guid: 3318e1712964e4342af8cf5e7f995893, type: 3}
       propertyPath: m_LocalPosition.y

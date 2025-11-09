@@ -37,6 +37,7 @@ namespace DonkeyKong
         private int m_FrameIndex = -1;
         private bool m_IsStop;
 
+        private DonkeyKongLadder m_ClimbingLadder;
         private float m_LadderUpDistance;
         private float m_LadderDownDistance;
         private float m_GoLeftDistance;
@@ -268,7 +269,7 @@ namespace DonkeyKong
 
             foreach (var ground in grounds)
             {
-                const float rayDistance = 0.15f;
+                const float rayDistance = 0.2f;
                 var rayStart = (Vector2) transform.position + Vector2.up * 0.1f;
                 var rayEnd = rayStart + Vector2.down * rayDistance;
                 var groundCenter = ground.GetCenter();
@@ -305,6 +306,7 @@ namespace DonkeyKong
                     if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetBottomRectCenter(), ladder.GetBottomRectSize()))
                     {
                         m_State = PlayerState.ClimbLadder;
+                        m_ClimbingLadder = ladder;
                     }
                 }
             }
@@ -318,6 +320,7 @@ namespace DonkeyKong
                     if (Collisions2D.CheckCircleAndAxisAlignedRect(playerBottom, 0f, ladder.GetTopRectCenter(), ladder.GetTopRectSize()))
                     {
                         m_State = PlayerState.ClimbLadder;
+                        m_ClimbingLadder = ladder;
                     }
                 }
             }
@@ -341,7 +344,11 @@ namespace DonkeyKong
                 {
                     var dist = m_Game.GetDeltaTime() * climbSpeed;
                     transform.position += Vector3.up * dist;
-                    m_LadderUpDistance += dist;
+
+                    if (m_ClimbingLadder && !m_ClimbingLadder.IsBroken())
+                    {
+                        m_LadderUpDistance += dist;
+                    }
                 } 
                 
                 else if (climbDown)
@@ -360,9 +367,12 @@ namespace DonkeyKong
                     {
                         var dist = m_Game.GetDeltaTime() * climbSpeed;
                         transform.position += Vector3.down * dist;
-                        m_LadderDownDistance += dist;
+                        
+                        if (m_ClimbingLadder && !m_ClimbingLadder.IsBroken())
+                        {
+                            m_LadderDownDistance += dist;
+                        }
                     }
-                    
                 }
             }
         }
@@ -396,12 +406,16 @@ namespace DonkeyKong
         public void ResetState()
         {
             m_State = PlayerState.Idle;
+            m_JumpStartPositionY = 0f;
             m_VerticalVelocity = 0f;
             m_IsGrounded = false;
             m_FrameIndex = -1;
             m_IsStop = false;
             m_LadderUpDistance = 0f;
             m_LadderDownDistance = 0f;
+            m_GoLeftDistance = 0f;
+            m_GoRightDistance = 0f;
+            m_ClimbingLadder = null;
             m_EscapedBarrels.Clear();
             
             SetPosition(m_Game.GetStartPosition());
@@ -430,7 +444,7 @@ namespace DonkeyKong
 
         public int GetFrameIndex()
         {
-            return Mathf.FloorToInt(m_FrameIndex / 10f);
+            return m_FrameIndex;
         }
         
         public void Stop()
@@ -454,22 +468,22 @@ namespace DonkeyKong
             var sqrDistance = Vector2.SqrMagnitude(targetPosition - position);
             var distanceFitness = 1f / (1f + sqrDistance);
             var barrelEscapeFitness = m_EscapedBarrels.Count;
-            var ladderClimbFitness = m_LadderUpDistance - m_LadderDownDistance;
-            var horizontalMoveFitness = Mathf.Abs(m_GoRightDistance - m_GoLeftDistance);
             var winFitness = m_State is PlayerState.Win
                 ? 1f / (1f + m_FrameIndex)
                 : 0f;
             var dieFitness = m_State is PlayerState.Dead ? -1f : 0f;
             var heightFitness = position.y;
 
-            return distanceFitness * 1f +
-                   barrelEscapeFitness * 0.1f +
-                   ladderClimbFitness * 0.05f +
-                   horizontalMoveFitness * 0.1f +
-                   winFitness * 5f +
-                   dieFitness * 1f +
-                   heightFitness * 2f +
-                   10f;
+            return distanceFitness * 0f +
+                   barrelEscapeFitness * 0f +
+                   m_LadderUpDistance * 0f +
+                   m_LadderDownDistance * 0f +
+                   m_GoRightDistance * 0.1f +
+                   m_GoLeftDistance * 0f +
+                   winFitness * 0f +
+                   dieFitness * 0f +
+                   heightFitness * 1f +
+                   4.2f;
         }
     }
 }

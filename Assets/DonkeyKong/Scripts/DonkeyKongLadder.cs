@@ -7,6 +7,7 @@ namespace DonkeyKong
         [SerializeField] private Transform _bottom;
         [SerializeField] private Transform _top;
         [SerializeField] private Transform _barrelEnter;
+        [SerializeField] private bool _isBroken;
 
 
         private void OnDrawGizmos()
@@ -50,6 +51,11 @@ namespace DonkeyKong
         public Vector2 GetBarrelEnterRectSize()
         {
             return _barrelEnter.localScale;
+        }
+
+        public bool IsBroken()
+        {
+            return _isBroken;
         }
     }
 }

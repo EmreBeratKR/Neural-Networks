@@ -169,7 +169,11 @@ namespace GeneticAlgorithm
 
         private void OnSimulationDone()
         {
-            CacheValues();
+            if (!m_IsTerminated)
+            { 
+                CacheValues();
+            }
+            
             OnGenerationEvaluated?.Invoke(m_GenerationNumber + 1);
             
             if (m_IsTerminated) return;
@@ -314,7 +318,7 @@ namespace GeneticAlgorithm
             }
             
             var averageFitness = m_FitnessValues.Average(e => e);
-            
+
             m_AverageFitnessValues.Add(averageFitness);
             m_FitnessSum = m_FitnessValues.Sum(e => e);
         }

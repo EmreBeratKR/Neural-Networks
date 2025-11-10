@@ -78,7 +78,14 @@ namespace Value_Match
 
             m_Players.Sort((a, b) =>
             {
-                return -1 * b.GetFitness().CompareTo(a.GetFitness());
+                var val = -1 * b.GetFitness().CompareTo(a.GetFitness());
+
+                if (val == 0)
+                {
+                    return -1 * b.GetValue().CompareTo(a.GetValue());
+                }
+
+                return val;
             });
             
             for (var i = 0; i < m_Players.Count; i++)

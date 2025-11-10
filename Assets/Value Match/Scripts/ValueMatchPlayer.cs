@@ -48,6 +48,11 @@ namespace Value_Match
             _valueField.text = value.ToString();
         }
 
+        public int GetValue()
+        {
+            return m_Brain.GetAction(0);
+        }
+        
         public void SetPosition(Vector2 position)
         {
             transform.position = position;

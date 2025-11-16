@@ -1,0 +1,6201 @@
+{
+    "generationNumber": 50,
+    "averageFitnessValues": [
+        0.6631472110748291,
+        0.7577512264251709,
+        0.8156479597091675,
+        0.8619830012321472,
+        0.886025607585907,
+        0.895312488079071,
+        0.9010186791419983,
+        0.9217371344566345,
+        0.9161994457244873,
+        0.9337660670280457,
+        0.9400122761726379,
+        0.9365808963775635,
+        0.9196614623069763,
+        0.9331226944923401,
+        0.9254480600357056,
+        0.9402075409889221,
+        0.943367063999176,
+        0.946652889251709,
+        0.9473690390586853,
+        0.9510493278503418,
+        0.9554534554481506,
+        0.9465954303741455,
+        0.952431857585907,
+        0.9537760615348816,
+        0.9468022584915161,
+        0.9455040097236633,
+        0.9466375708580017,
+        0.9472196698188782,
+        0.9370251297950745,
+        0.9410347938537598,
+        0.9430338740348816,
+        0.9383923411369324,
+        0.9404641389846802,
+        0.9400084018707275,
+        0.9400045871734619,
+        0.9384650588035584,
+        0.950551450252533,
+        0.9355200529098511,
+        0.9376646876335144,
+        0.931640625,
+        0.9175781011581421,
+        0.9290900826454163,
+        0.928622841835022,
+        0.9262369871139526,
+        0.9321308135986328,
+        0.93473881483078,
+        0.9488855600357056,
+        0.9561963677406311,
+        0.9415594339370728,
+        0.9557445049285889
+    ],
+    "entities": [
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5764706134796143,
+            "actions": [
+                92
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7803921699523926,
+            "actions": [
+                144
+            ]
+        },
+        {
+            "fitness": 0.8078431487083435,
+            "actions": [
+                249
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.4431372582912445,
+            "actions": [
+                58
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8117647171020508,
+            "actions": [
+                248
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8352941274642944,
+            "actions": [
+                158
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7372549176216126,
+            "actions": [
+                133
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 0.3803921639919281,
+            "actions": [
+                42
+            ]
+        },
+        {
+            "fitness": 0.8470588326454163,
+            "actions": [
+                161
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9098039269447327,
+            "actions": [
+                177
+            ]
+        },
+        {
+            "fitness": 0.5137255191802979,
+            "actions": [
+                76
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.3137255012989044,
+            "actions": [
+                25
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9882352948188782,
+            "actions": [
+                197
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9098039269447327,
+            "actions": [
+                177
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9215686321258545,
+            "actions": [
+                180
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6039215922355652,
+            "actions": [
+                99
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                230
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                195
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2549019753932953,
+            "actions": [
+                10
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5764706134796143,
+            "actions": [
+                92
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6666666865348816,
+            "actions": [
+                115
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5764706134796143,
+            "actions": [
+                92
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5647059082984924,
+            "actions": [
+                89
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9058823585510254,
+            "actions": [
+                224
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                195
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2705882489681244,
+            "actions": [
+                14
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6000000238418579,
+            "actions": [
+                98
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5647059082984924,
+            "actions": [
+                89
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7529411911964417,
+            "actions": [
+                137
+            ]
+        },
+        {
+            "fitness": 0.23529411852359773,
+            "actions": [
+                5
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9921568632125855,
+            "actions": [
+                198
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                205
+            ]
+        },
+        {
+            "fitness": 0.9254902005195618,
+            "actions": [
+                181
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8588235378265381,
+            "actions": [
+                164
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8588235378265381,
+            "actions": [
+                164
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 0.8392156958580017,
+            "actions": [
+                241
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8470588326454163,
+            "actions": [
+                239
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 0.6666666865348816,
+            "actions": [
+                115
+            ]
+        },
+        {
+            "fitness": 0.7372549176216126,
+            "actions": [
+                133
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8274509906768799,
+            "actions": [
+                244
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7803921699523926,
+            "actions": [
+                144
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7921568751335144,
+            "actions": [
+                147
+            ]
+        },
+        {
+            "fitness": 0.6980392336845398,
+            "actions": [
+                123
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 0.7176470756530762,
+            "actions": [
+                128
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.32549020648002627,
+            "actions": [
+                28
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 0.9137254953384399,
+            "actions": [
+                178
+            ]
+        },
+        {
+            "fitness": 0.9137254953384399,
+            "actions": [
+                178
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5568627715110779,
+            "actions": [
+                87
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7098039388656616,
+            "actions": [
+                126
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8705882430076599,
+            "actions": [
+                233
+            ]
+        },
+        {
+            "fitness": 0.6000000238418579,
+            "actions": [
+                98
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                195
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7372549176216126,
+            "actions": [
+                133
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.250980406999588,
+            "actions": [
+                9
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5137255191802979,
+            "actions": [
+                76
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5176470875740051,
+            "actions": [
+                77
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.34117648005485537,
+            "actions": [
+                32
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.4431372582912445,
+            "actions": [
+                58
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8941176533699036,
+            "actions": [
+                173
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7098039388656616,
+            "actions": [
+                126
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2666666805744171,
+            "actions": [
+                13
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9215686321258545,
+            "actions": [
+                180
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9254902005195618,
+            "actions": [
+                181
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9921568632125855,
+            "actions": [
+                198
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8980392217636108,
+            "actions": [
+                174
+            ]
+        },
+        {
+            "fitness": 0.6784313917160034,
+            "actions": [
+                118
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8980392217636108,
+            "actions": [
+                174
+            ]
+        },
+        {
+            "fitness": 0.2666666805744171,
+            "actions": [
+                13
+            ]
+        },
+        {
+            "fitness": 0.2666666805744171,
+            "actions": [
+                13
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8352941274642944,
+            "actions": [
+                158
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5764706134796143,
+            "actions": [
+                92
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.572549045085907,
+            "actions": [
+                91
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.43921568989753725,
+            "actions": [
+                57
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9254902005195618,
+            "actions": [
+                181
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9372549057006836,
+            "actions": [
+                216
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9921568632125855,
+            "actions": [
+                202
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9137254953384399,
+            "actions": [
+                178
+            ]
+        },
+        {
+            "fitness": 0.4901960790157318,
+            "actions": [
+                70
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.615686297416687,
+            "actions": [
+                102
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9372549057006836,
+            "actions": [
+                216
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9372549057006836,
+            "actions": [
+                216
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9254902005195618,
+            "actions": [
+                181
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                205
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 0.6392157077789307,
+            "actions": [
+                108
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5137255191802979,
+            "actions": [
+                76
+            ]
+        },
+        {
+            "fitness": 0.9372549057006836,
+            "actions": [
+                216
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7098039388656616,
+            "actions": [
+                126
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8784313797950745,
+            "actions": [
+                169
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8470588326454163,
+            "actions": [
+                161
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.4901960790157318,
+            "actions": [
+                70
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8196078538894653,
+            "actions": [
+                246
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2549019753932953,
+            "actions": [
+                10
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8235294222831726,
+            "actions": [
+                245
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8823529481887817,
+            "actions": [
+                170
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.3686274588108063,
+            "actions": [
+                39
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8901960849761963,
+            "actions": [
+                172
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.43921568989753725,
+            "actions": [
+                57
+            ]
+        },
+        {
+            "fitness": 0.9764705896377564,
+            "actions": [
+                206
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6313725709915161,
+            "actions": [
+                106
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7803921699523926,
+            "actions": [
+                144
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.4901960790157318,
+            "actions": [
+                70
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6941176652908325,
+            "actions": [
+                122
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.615686297416687,
+            "actions": [
+                102
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.43921568989753725,
+            "actions": [
+                57
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.7607843279838562,
+            "actions": [
+                139
+            ]
+        },
+        {
+            "fitness": 0.9137254953384399,
+            "actions": [
+                178
+            ]
+        },
+        {
+            "fitness": 0.572549045085907,
+            "actions": [
+                91
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6000000238418579,
+            "actions": [
+                98
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6078431606292725,
+            "actions": [
+                100
+            ]
+        },
+        {
+            "fitness": 0.9058823585510254,
+            "actions": [
+                176
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8274509906768799,
+            "actions": [
+                244
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6980392336845398,
+            "actions": [
+                123
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8941176533699036,
+            "actions": [
+                173
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6039215922355652,
+            "actions": [
+                99
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6392157077789307,
+            "actions": [
+                108
+            ]
+        },
+        {
+            "fitness": 0.9098039269447327,
+            "actions": [
+                177
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6980392336845398,
+            "actions": [
+                123
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8352941274642944,
+            "actions": [
+                158
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9686274528503418,
+            "actions": [
+                208
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                195
+            ]
+        },
+        {
+            "fitness": 0.9803921580314636,
+            "actions": [
+                195
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8352941274642944,
+            "actions": [
+                158
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8117647171020508,
+            "actions": [
+                248
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8549019694328308,
+            "actions": [
+                237
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.3803921639919281,
+            "actions": [
+                42
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6470588445663452,
+            "actions": [
+                110
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2666666805744171,
+            "actions": [
+                13
+            ]
+        },
+        {
+            "fitness": 0.9254902005195618,
+            "actions": [
+                181
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.32549020648002627,
+            "actions": [
+                28
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.32549020648002627,
+            "actions": [
+                28
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.8509804010391235,
+            "actions": [
+                238
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.6392157077789307,
+            "actions": [
+                108
+            ]
+        },
+        {
+            "fitness": 0.7333333492279053,
+            "actions": [
+                132
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.5607843399047852,
+            "actions": [
+                88
+            ]
+        },
+        {
+            "fitness": 0.9058823585510254,
+            "actions": [
+                224
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.2666666805744171,
+            "actions": [
+                13
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.929411768913269,
+            "actions": [
+                182
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 0.615686297416687,
+            "actions": [
+                102
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        },
+        {
+            "fitness": 1.0,
+            "actions": [
+                200
+            ]
+        }
+    ]
+}

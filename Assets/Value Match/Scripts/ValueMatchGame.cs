@@ -12,6 +12,8 @@ namespace Value_Match
     {
         [SerializeField] private ValueMatchPlayer _playerPrefab;
         [SerializeField] private float _timer;
+        [SerializeField] private bool _useSeededValue;
+        [SerializeField, Range(0, 255)] private int _seededValue;
         
         
         public event Action OnSimulationDone;
@@ -38,7 +40,7 @@ namespace Value_Match
         {
             m_Parameters = parameters;
             m_Players = new List<ValueMatchPlayer>();
-            m_Value = Random.Range(0, 256);
+            m_Value = _useSeededValue ? _seededValue : Random.Range(0, 256);
             
             var dummy = Instantiate(_playerPrefab, transform);
             

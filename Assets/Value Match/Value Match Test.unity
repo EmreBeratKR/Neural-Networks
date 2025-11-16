@@ -429,6 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 6494753428583152477, guid: 231f595fa2d4e4815b0b0e468c44691f, type: 3}
   _timer: 0.1
+  _useSeededValue: 1
+  _seededValue: 200
 --- !u!1 &914861400
 GameObject:
   m_ObjectHideFlags: 0

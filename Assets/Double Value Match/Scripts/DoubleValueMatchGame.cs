@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneticAlgorithm;
 using UnityEngine;
-using Value_Match;
 using Random = UnityEngine.Random;
 
 namespace Double_Value_Match
@@ -13,6 +12,8 @@ namespace Double_Value_Match
     {
         [SerializeField] private DoubleValueMatchPlayer _playerPrefab;
         [SerializeField] private float _timer;
+        [SerializeField] private bool _useSeededValue;
+        [SerializeField, Min(0)] private Vector2Int _seededValue;
         
         
         public event Action OnSimulationDone;
@@ -40,8 +41,17 @@ namespace Double_Value_Match
         {
             m_Parameters = parameters;
             m_Players = new List<DoubleValueMatchPlayer>();
-            m_Value0 = Random.Range(0, 256);
-            m_Value1 = Random.Range(0, 256);
+
+            if (_useSeededValue)
+            {
+                m_Value0 = _seededValue.x;
+                m_Value1 = _seededValue.y;
+            }
+            else
+            {
+                m_Value0 = Random.Range(0, 256);
+                m_Value1 = Random.Range(0, 256);
+            }
             
             var dummy = Instantiate(_playerPrefab, transform);
             

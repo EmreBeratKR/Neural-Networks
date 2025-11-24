@@ -429,6 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 7472189743720186024, guid: 04e2707e3bc06204a90672bd510e647e, type: 3}
   _timer: 0.1
+  _useSeededValue: 1
+  _seededValue: {x: 50, y: 150}
 --- !u!1 &914861400
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +464,8 @@ MonoBehaviour:
   _generationNumberText: {fileID: 1980329797}
   _brainSizeText: {fileID: 2038024371}
   _bestFitnessText: {fileID: 145553959}
-  _mode: 0
-  _saveFile: {fileID: 0}
+  _mode: 1
+  _saveFile: {fileID: 4900000, guid: 7cf6330d0b5904c6dabebdd30c26dd49, type: 3}
   _parameters:
     isFrameDependent: 0
     framesPerSeconds: 1

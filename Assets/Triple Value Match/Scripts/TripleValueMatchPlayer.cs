@@ -52,7 +52,7 @@ namespace Triple_Value_Match
             _value1Field.text = value1.ToString();
             
             var normalized2 = value2 / 255f;
-            _value1Field.text = value2.ToString();
+            _value2Field.text = value2.ToString();
             
             _spriteRenderer.color = new Color(normalized0, normalized1, normalized2, 1f);
         }

@@ -12,6 +12,8 @@ namespace Triple_Value_Match
     {
         [SerializeField] private TripleValueMatchPlayer _playerPrefab;
         [SerializeField] private float _timer;
+        [SerializeField] private bool _useSeededValue;
+        [SerializeField, Min(0)] private Vector3Int _seededValue;
         
         
         public event Action OnSimulationDone;
@@ -40,9 +42,19 @@ namespace Triple_Value_Match
         {
             m_Parameters = parameters;
             m_Players = new List<TripleValueMatchPlayer>();
-            m_Value0 = Random.Range(0, 256);
-            m_Value1 = Random.Range(0, 256);
-            m_Value2 = Random.Range(0, 256);
+
+            if (_useSeededValue)
+            {
+                m_Value0 = _seededValue.x;
+                m_Value1 = _seededValue.y;
+                m_Value2 = _seededValue.z;
+            }
+            else
+            {
+                m_Value0 = Random.Range(0, 256);
+                m_Value1 = Random.Range(0, 256);
+                m_Value2 = Random.Range(0, 256);
+            }
             
             var dummy = Instantiate(_playerPrefab, transform);
             
